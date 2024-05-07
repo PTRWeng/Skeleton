@@ -40,7 +40,7 @@ namespace Testing3
         }
         [TestMethod]
             
-        public void DateAddedPropertyOK()
+        public void DatePropertyOK()
         {
              //create an instance of the class we want to create
              clsOrder AnOrder = new clsOrder();

@@ -15,6 +15,16 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the data from the session object
         AnGame = (clsGame)Session["Angame"];
         //display the game title for this entry
-        Response.Write(AnGame.GameTitle);
+        Response.Write(AnGame.GameTitle + "\n");
+        //display the game Description for this entry
+        Response.Write(AnGame.GameDescription + "\n");
+        //display the game platform for this entry
+        Response.Write(AnGame.GamePlatform + "\n");
+        //display the game release date for this entry
+        Response.Write(AnGame.ReleaseDate + "\n");
+        //display the game price for this entry
+        Response.Write(AnGame.Price + "\n");
+        //display the game available for this entry
+        Response.Write(AnGame.Available);
     }
 }

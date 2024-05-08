@@ -8,16 +8,7 @@ namespace Testing3
 {
     [TestClass]
     public class tstOrder
-    {
-        private object varchar;
-
-        public int Id { get; private set; }
-        public decimal Amount { get; private set; }
-        public int Quantity { get; private set; }
-        public char Address { get; private set; }
-        public char Description { get; private set; }
-
-        [TestMethod]
+    {        [TestMethod]
         public void InstanceOK()
         {
             //crat an instance of the class we want to create
@@ -47,9 +38,9 @@ namespace Testing3
              //create some test data to assign to the property
              DateTime TestData = DateTime.Now.Date;
              //assign the data to the property
-             AnOrder.Date = TestData;
+             AnOrder.orderDate = TestData;
              //test to see that the two values are the same
-             Assert.AreEqual(AnOrder.Date, TestData);
+             Assert.AreEqual(AnOrder.orderDate, TestData);
         }
 
         [TestMethod]
@@ -59,11 +50,11 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            int TestData = Id;
+            int TestData = 1;
             //assign the data to the property
-            AnOrder.Id = TestData;
+            AnOrder.orderId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.Id, TestData);
+            Assert.AreEqual(AnOrder.orderId, TestData);
         }
 
         [TestMethod]
@@ -73,11 +64,11 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            decimal TestData = Amount;
+            decimal TestData = 13;
             //assign the data to the property
-            AnOrder.Amount = TestData;
+            AnOrder.orderAmount = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.Amount, TestData);
+            Assert.AreEqual(AnOrder.orderAmount, TestData);
         }
 
         [TestMethod]
@@ -87,11 +78,11 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            int TestData = Quantity;
+            int TestData = 2;
             //assign the data to the property
-            AnOrder.Quantity = TestData;
+            AnOrder.orderQuantity = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.Quantity, TestData);
+            Assert.AreEqual(AnOrder.orderQuantity, TestData);
         }
 
         [TestMethod]
@@ -101,11 +92,11 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            char TestData = Address;
+            string TestData = "25 grasmere street";
             //assign the data to the property
-            AnOrder.Address = TestData;
+            AnOrder.shippingAddress = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.Address, TestData);
+            Assert.AreEqual(AnOrder.shippingAddress, TestData);
         }
 
         [TestMethod]
@@ -115,11 +106,11 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            char TestData = Description;
+            string TestData = "Call Of Duty";
             //assign the data to the property
-            AnOrder.Description = TestData;
+            AnOrder.orderDescription = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.Description, TestData);
+            Assert.AreEqual(AnOrder.orderDescription, TestData);
         }
 
     }

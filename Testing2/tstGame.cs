@@ -106,5 +106,64 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AnGame.Price, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 GameID = 2;
+            //invoke the method
+            Found = AnGame.Find(GameID);
+            //test to see if the result is true
+            Assert.IsTrue( Found );     
+        }
+
+        [TestMethod]
+        public void TestGameIDFound() 
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 GameID = 2;
+            //invoke the method
+            Found = AnGame.Find(GameID);
+            //check the game ID
+            if ( AnGame.GameID != 2)
+            {
+                OK = false;
+            }
+            //test to see that result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestReleaseDateFound()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 GameID = 2;
+            //invoke the method
+            Found = AnGame.Find(GameID);
+            //check the release date property
+            if (AnGame.ReleaseDate != Convert.ToDateTime("19/01/2024"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }

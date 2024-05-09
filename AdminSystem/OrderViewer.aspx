@@ -7,9 +7,10 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="formal" runat="server">
         <div>
         </div>
     </form>
-</body>
+    style="height: 16px">
+    </body>
 </html>

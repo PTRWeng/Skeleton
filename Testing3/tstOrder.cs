@@ -113,6 +113,20 @@ namespace Testing3
             Assert.AreEqual(AnOrder.orderDescription, TestData);
         }
 
+        [TestMethod]
+        public void FindMeMethodOK() 
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //create a boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 OrderId = 0;
+            //invoke the method
+            Found = AnOrder.Find(OrderId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+            }
     }
 }
 

@@ -13,5 +13,11 @@ namespace ClassLibrary
         public string orderDescription { get; set; }
         public string shippingAddress { get; set; }
         public int orderQuantity { get; set; }
+
+        public bool Find(int orderId)
+        {
+            //always return true
+            throw new NotImplementedException();
+        }
     }
 }

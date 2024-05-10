@@ -127,16 +127,32 @@ namespace ClassLibrary
         /****** FIND METHOD ******/
         public bool Find(int GameID)
         {
-            //set the private data members to the test data value
-            mGameID = 2;
-            mReleaseDate = Convert.ToDateTime("19/01/2024");
-            mAvailable = true;
-            mGameTitle = "Stellar Blade";
-            mGameDescription = "Embark on an epic journey across war-torn 19th-century Japan in this combat-focused open-world action RPG from Team NINJA, the veteran studio behind Nioh and NINJA Gaiden.";
-            mGamePlatform = "PS5";
-            mPrice = 44.99;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the game id to search for
+            DB.AddParameter("@GameID", GameID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblGame_FilterByGameID");
+            //if one recode is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mGameID = Convert.ToInt32(DB.DataTable.Rows[0]["GameID"]);
+                mGameTitle = Convert.ToString(DB.DataTable.Rows[0]["GameTitle"]);
+                mGameDescription = Convert.ToString(DB.DataTable.Rows[0]["GameDescription"]);
+                mGamePlatform = Convert.ToString(DB.DataTable.Rows[0]["Gameplatform"]);
+                mReleaseDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ReleaseDate"]);
+                mPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
+                mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
+                //return that everything worked OK
+                return true;
+            }
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+
         }
     }
 }

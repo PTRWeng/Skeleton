@@ -34,4 +34,44 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the view page
         Response.Redirect("ProductViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        // Create an instance of the game class
+        clsGame AnGame = new clsGame();
+        // Create a variable to store the primary key
+        Int32 GameID;
+        // Create a variable to store the result of the find operation
+        Boolean Found = false;
+
+        try
+        {
+            // Get the primary key entered by the user
+            GameID = Convert.ToInt32(txtgameID.Text);
+
+            // Find the record
+            Found = AnGame.Find(GameID);
+
+            if (Found)
+            {
+                // Display the values of the properties in the form
+                txtGameTitle.Text = AnGame.GameTitle;
+                txtGameDescription.Text = AnGame.GameDescription;
+                txtGamePlatform.Text = AnGame.GamePlatform;
+                txtReleaseDate.Text = AnGame.ReleaseDate.ToString();
+                txtPrice.Text = AnGame.Price.ToString();
+                chkAvailable.Checked = AnGame.Available;
+            }
+            else
+            {
+                // Record not found, display an error message
+                lblError.Text = "Record with Game ID " + GameID + " is not found.";
+            }
+        }
+        catch (FormatException)
+        {
+            // Handle invalid input (non-integer value for GameID)
+            lblError.Text = "Please enter a valid Game ID.";
+        }
+    }
 }

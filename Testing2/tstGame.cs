@@ -140,11 +140,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 GameID = 2;
+            Int32 GameID = 6;
             //invoke the method
             Found = AnGame.Find(GameID);
             //check the game ID
-            if ( AnGame.GameID != 2)
+            if ( AnGame.GameID != 6)
             {
                 OK = false;
             }
@@ -162,11 +162,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 GameID = 2;
+            Int32 GameID = 6;
             //invoke the method
             Found = AnGame.Find(GameID);
             //check the release date property
-            if (AnGame.ReleaseDate != Convert.ToDateTime("19/01/2024"))
+            if (AnGame.ReleaseDate != Convert.ToDateTime("29/09/2023"))
             {
                 OK = false;
             }
@@ -184,11 +184,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 GameID = 2;
+            Int32 GameID = 6;
             //invoke the method
             Found = AnGame.Find(GameID);
             //check the game title property
-            if (AnGame.GameTitle != "Stellar Blade")
+            if (AnGame.GameTitle != "EA SPORTS FC™ 24")
             {
                 OK = false;
             }
@@ -206,11 +206,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 GameID = 2;
+            Int32 GameID = 6;
             //invoke the method
             Found = AnGame.Find(GameID);
             //check the game description property
-            if (AnGame.GameDescription != "Embark on an epic journey across war-torn 19th-century Japan in this combat-focused open-world action RPG from Team NINJA, the veteran studio behind Nioh and NINJA Gaiden.")
+            if (AnGame.GameDescription != "Built on innovation and authenticity, feel closer to the game in the most true-to-football experience yet with the best players from the biggest clubs, leagues and competitions around the globe.")
             {
                 OK = false;
             }
@@ -228,7 +228,7 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 GameID = 2;
+            Int32 GameID = 6;
             //invoke the method
             Found = AnGame.Find(GameID);
             //check the game platform property
@@ -250,11 +250,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 GameID = 2;
+            Int32 GameID = 6;
             //invoke the method
             Found = AnGame.Find(GameID);
             //check the game price property
-            if (AnGame.Price != 44.99)
+            if (AnGame.Price != 69.9900)
             {
                 OK = false;
             }
@@ -272,7 +272,7 @@ namespace Testing2
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 GameID = 2;
+            Int32 GameID = 6;
             //invoke the method
             Found = AnGame.Find(GameID);
             //check the availble property

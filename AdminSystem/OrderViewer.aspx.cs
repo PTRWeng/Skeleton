@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 using ClassLibrary;
 
 public partial class _1Viewer : System.Web.UI.Page
@@ -16,5 +17,17 @@ public partial class _1Viewer : System.Web.UI.Page
         AnOrder = (clsOrder)Session["Order"];
         //display the order id for the entry
         Response.Write(AnOrder.orderId);
+        //display the order quantity for this entry
+        Response.Write(AnOrder.orderQuantity + "\n");
+        //display the order Description for this entry
+        Response.Write(AnOrder.orderDescription + "\n");
+        //display the order address for this entry
+        Response.Write(AnOrder.shippingAddress + "\n");
+        //display the order date for this entry
+        Response.Write(AnOrder.orderDate + "\n");
+        //display the order price for this entry
+        Response.Write(AnOrder.Price + "\n");
+        //display the order available for this entry
+        Response.Write(AnOrder.Available);
     }
 }

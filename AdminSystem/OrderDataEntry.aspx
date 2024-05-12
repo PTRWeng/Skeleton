@@ -19,8 +19,7 @@
             <asp:Label ID="tblorderDate" runat="server" style="z-index: 1; left: 22px; top: 252px; position: absolute" Text="Order Date" height="13px" width="107px"></asp:Label>
             <asp:Label ID="tblshippingAddress" runat="server" style="z-index: 1; left: 22px; top: 293px; position: absolute; height: 13px" Text="Shipping Address" width="107px"></asp:Label>
             <asp:Label ID="tblorderAmount" runat="server" style="z-index: 1; left: 24px; top: 339px; position: absolute; bottom: 239px; width: 107px; margin-bottom: 22px;" Text="Price"></asp:Label>
-        </p>
-        <p>
+
             <asp:Label ID="tblQuantity" runat="server" style="z-index: 1; left: 22px; top: 377px; position: absolute" Text="No. of Items" height="13px" width="107px"></asp:Label>
             <asp:Label ID="tblDescription" runat="server" style="z-index: 1; left: 23px; top: 413px; position: absolute" Text="Description" height="13px" width="107px"></asp:Label>
         </p>
@@ -28,7 +27,7 @@
             &nbsp;</p>
         <asp:Label ID="tblError" runat="server" style="z-index: 1; left: 99px; top: 497px; position: absolute; height: 13px" width="107px"></asp:Label>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 19px; top: 546px; position: absolute; height: 26px" Text="OK" width="107px" />
-        <asp:Button ID="BTNCancel" runat="server" style="z-index: 1; left: 152px; top: 546px; position: absolute; height: 26px;" Text="Cancel" width="107px" />
+        <asp:Button ID="btnCancel" runat="server" Style="z-index: 1; left: 152px; top: 546px; position: absolute; height: 26px;" Text="Cancel" Width="107px" OnClick="BTNCancel_Click" />
         <p>
             &nbsp;</p>
         <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 146px; top: 252px; position: absolute" height="13px" width="107px"></asp:TextBox>

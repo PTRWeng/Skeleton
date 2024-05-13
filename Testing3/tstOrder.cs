@@ -25,9 +25,9 @@ namespace Testing3
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property 
-            AnOrder.Active = TestData;
+            AnOrder.Available = TestData;
             //test to see that the two values are the same 
-            Assert.AreEqual(AnOrder.Active, TestData);
+            Assert.AreEqual(AnOrder.Available, TestData);
         }
         [TestMethod]
             
@@ -50,11 +50,11 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            int TestData = 1;
+            Int32 TestData = 1;
             //assign the data to the property
-            AnOrder.orderId = TestData;
+            AnOrder.orderID = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.orderId, TestData);
+            Assert.AreEqual(AnOrder.orderID, TestData);
         }
 
 
@@ -65,7 +65,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            decimal TestData = 13;
+            double TestData = 13;
             //assign the data to the property
             AnOrder.orderAmount = TestData;
             //test to see that the two values are the same
@@ -79,7 +79,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            int TestData = 2;
+            Int32 TestData = 2;
             //assign the data to the property
             AnOrder.orderQuantity = TestData;
             //test to see that the two values are the same
@@ -144,7 +144,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the game ID
-            if (AnOrder.OrderID != 6)
+            if (AnOrder.orderID != 6)
             {
                 OK = false;
             }
@@ -166,7 +166,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the release date property
-            if (AnOrder.Date != Convert.ToDateTime("29/09/2023"))
+            if (AnOrder.orderDate != Convert.ToDateTime("29/09/2023"))
             {
                 OK = false;
             }
@@ -188,7 +188,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the availble property
-            if (AnOrder.Status != true)
+            if (AnOrder.morderStatus != true)
             {
                 OK = false;
             }
@@ -210,7 +210,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the game price property
-            if (AnOrder.Amount != 69.9900)
+            if (AnOrder.orderAmount != 69)
             {
                 OK = false;
             }
@@ -233,7 +233,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the game price property
-            if (AnOrder.Quantity != 5)
+            if (AnOrder.orderQuantity != 3)
             {
                 OK = false;
             }
@@ -255,7 +255,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the game price property
-            if (AnOrder.Address != "25 London Road")
+            if (AnOrder.shippingAddress != "25 London Road")
             {
                 OK = false;
             }
@@ -275,9 +275,9 @@ namespace Testing3
             //create some test data to use with the method
             Int32 OrderID = 6;
             //invoke the method
-            Found = AnOrder.Find(GameOrderID);
+            Found = AnOrder.Find(OrderID);
             //check the game description property
-            if (AnOrder.Description != "League Of Legends")
+            if (AnOrder.orderDescription != "League Of Legends")
             {
                 OK = false;
             }

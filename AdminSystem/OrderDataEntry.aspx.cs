@@ -16,17 +16,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a instance of clsOrder
         clsOrder Order = new clsOrder();
         //capture order id
-        Order.orderID = Convert.ToInt32(txtOrderId.Text);
+        Order.orderID = Convert.ToInt32(txtorderId.Text);
         //capture active check box
-        Order.Available = chkActive.Checked;
+        Order.Available = chkAvailable.Checked;
         //capture the amount
-        Order.Price = Convert.ToDecimal(txtorderAmount.Text);
+        Order.orderAmount = Convert.ToDouble(txtorderAmount.Text);
         //capture the order Description
-        Order.orderDescription = Convert.ToString(txtOrderDescription.Text);
+        Order.orderDescription = Convert.ToString(txtorderDescription.Text);
         //capture order date
         Order.orderDate = Convert.ToDateTime(DateTime.Now);
         //capture the order quantity
-        Order.orderQuantity = Convert.ToString(txtOrderQuantity.Text);
+        Order.orderQuantity = Convert.ToInt32(txtorderQuantity.Text);
         //store the order in the session object
         Session["Order"] = Order;
         //navigate to the new page
@@ -45,7 +45,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         try
         {
             // Get the primary key entered by the user
-            OrderID = Convert.ToInt32(txtOrderId.Text);
+            OrderID = Convert.ToInt32(txtorderId.Text);
 
             // Find the record
             Found = AnOrder.Find(OrderID);
@@ -53,24 +53,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
             if (Found)
             {
                 // Display the values of the properties in the form
-                txtOrderId.Text = AnOrder.orderId;
-                txtOrderDescription.Text = AnOrder.orderDescription;
+                txtorderDescription.Text = AnOrder.orderDescription;
                 txtshippingAddress.Text = AnOrder.shippingAddress;
-                txtOrderDate.Text = AnOrder.orderDate.ToString();
-                txtOrderAmount.Text = AnOrder.Price.ToString();
-                txtOrderQuantity.Text = AnOrder.orderQuantity;
+                txtorderDate.Text = AnOrder.orderDate.ToString();
+                txtorderAmount.Text = AnOrder.orderAmount.ToString();
+                txtorderQuantity.Text = AnOrder.orderQuantity.ToString();
                 chkAvailable.Checked = AnOrder.Available;
             }
             else
             {
                 // Record not found, display an error message
-                tblError.Text = "Record with Order ID " + OrderID + " is not found.";
+                lblError.Text = "Record with Order ID " + OrderID + " is not found.";
             }
         }
         catch (FormatException)
         {
             // Handle invalid input (non-integer value for GameID)
-            tblError.Text = "Please enter a valid Order ID.";
+            lblError.Text = "Please enter a valid Order ID.";
         }
     }
 

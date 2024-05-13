@@ -65,7 +65,7 @@ namespace ClassLibrary
         public bool morderStatus { get; private set; }
 
         //county no public property
-        public double Price
+        public double orderAmount
         {
             get
             {
@@ -115,15 +115,18 @@ namespace ClassLibrary
 
 
         //private data member for the order quantity property
-        private string morderQuantity;
+        private Int32 morderQuantity;
+
+
         //orderQuantity public property
-        public string orderQuantity
+        public Int32 orderQuantity
         {
             get
             {
                 //this line of code send data out of the property
                 return morderQuantity;
             }
+
             set
             {
                 //this line of code allows data into the property
@@ -131,8 +134,8 @@ namespace ClassLibrary
             }
         }
 
-        public bool Active { get; set; }
-        public string orderId { get; set; }
+
+        
 
         public bool Find(int OrderID)
         {
@@ -147,7 +150,7 @@ namespace ClassLibrary
             {
                 //copy the data from the database to the private data members
                 morderId = Convert.ToInt32(DB.DataTable.Rows[0]["orderId"]);
-                morderQuantity = Convert.ToString(DB.DataTable.Rows[0]["orderQuatity"]);
+                morderQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["orderQuatity"]);
                 morderDescription = Convert.ToString(DB.DataTable.Rows[0]["orderDescription"]);
                 mshippingAddress = Convert.ToString(DB.DataTable.Rows[0]["shippingAddress"]);
                 morderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["orderDate"]);

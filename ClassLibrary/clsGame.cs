@@ -154,5 +154,26 @@ namespace ClassLibrary
             }
 
         }
+
+        public string Valid(string gameTitle, string gameDescription, string gamePlatform, string releaseDate, string price)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the GameTitle is blank
+            if (gameTitle.Length == 0)
+            {
+                //record the error
+                Error = Error + "The game title may not be blank : ";
+            }
+            //if the game title is greater than 50 characters
+            if (gameTitle.Length > 50) 
+            {
+                //record the error
+                Error = Error + "The game title must be less than 50 characters : ";
+            }
+            //return any error messages
+            return "";
+        }
+
     }
 }

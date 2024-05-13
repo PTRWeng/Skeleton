@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
 
 namespace Testing2
 {
@@ -282,6 +283,148 @@ namespace Testing2
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+
+        //good test data
+        //create some test data to pass the method
+        String GameTitle = "Stellar Blade";
+        String GameDescription = "The future of humanity hangs in the balance in Stellar Blade, an all-new story-driven action adventure on PlayStation 5. Immerse yourself in a highly detailed post-apocalyptic world that blends beauty and horror to spectacular effect.";
+        String GamePlatform = "PS5";
+        String ReleaseDate = DateTime.Now.ToShortDateString();
+        String Price = "69.9900";
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void GameTitleMinLessOne() 
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            String GameTitle = ""; //this should trigger an error
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void GameTitleMin()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string GameTitle = "a"; //this should be ok
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void GameTitleMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string GameTitle = "aa"; //this should be ok
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void GameTitleMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string GameTitle = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void GameTitleMax()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string GameTitle = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void GameTitleMid()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string GameTitle = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void GameTitleMaxPlusOne() 
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string GameTitle = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should fail
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void GameTitleExtremeMax() 
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string GameTitle = "";
+            GameTitle = GameTitle.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
     }
 }

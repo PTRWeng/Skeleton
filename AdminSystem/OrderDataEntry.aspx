@@ -19,7 +19,7 @@
         <asp:Label ID="lblorderAmount" runat="server" height="19px" style="z-index: 1; left: 64px; top: 203px; position: absolute" Text="Price"></asp:Label>
         <asp:Label ID="lblorderQuantity" runat="server" height="19px" style="z-index: 1; left: 64px; top: 243px; position: absolute" Text="No. of Items"></asp:Label>
         <asp:Label ID="lblorderDescription" runat="server" height="19px" style="z-index: 1; left: 64px; top: 277px; position: absolute" Text="Description"></asp:Label>
-        <asp:Button ID="btnOk" runat="server" style="z-index: 1; left: 79px; top: 375px; position: absolute" Text="Ok" />
+        <asp:Button ID="btnOk" runat="server" style="z-index: 1; left: 79px; top: 375px; position: absolute; height: 26px;" Text="Ok" OnClick="btnOk_Click" />
         <p>
             <asp:CheckBox ID="chkAvailable" runat="server" style="z-index: 1; left: 134px; top: 311px; position: absolute; bottom: 123px" Text="Available" />
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 146px; top: 340px; position: absolute"></asp:Label>

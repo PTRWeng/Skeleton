@@ -40,7 +40,7 @@ namespace Testing2
             //creat an instance of the class we want to create
             clsGame AnGame = new clsGame();
             //create some test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
+            DateTime TestData = new DateTime(26 / 04 / 2024);
             //assign the data to the property
             AnGame.ReleaseDate = TestData;
             //test to see that the two values are the same
@@ -126,13 +126,13 @@ namespace Testing2
             //invoke the method
             Found = AnGame.Find(GameID);
             //test to see if the result is true
-            Assert.IsTrue( Found );     
+            Assert.IsTrue(Found);
         }
 
         /******************PROPERTY DATA TESTS***********************/
 
         [TestMethod]
-        public void TestGameIDFound() 
+        public void TestGameIDFound()
         {
             //create an instance of the class we want to create
             clsGame AnGame = new clsGame();
@@ -145,7 +145,7 @@ namespace Testing2
             //invoke the method
             Found = AnGame.Find(GameID);
             //check the game ID
-            if ( AnGame.GameID != 6)
+            if (AnGame.GameID != 6)
             {
                 OK = false;
             }
@@ -307,7 +307,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void GameTitleMinLessOne() 
+        public void GameTitleMinLessOne()
         {
             //create an instance of the class we want to create
             clsGame AnGame = new clsGame();
@@ -359,7 +359,8 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string GameTitle = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            string GameTitle = "";
+            GameTitle = GameTitle.PadRight(49, 'a'); //this should  be ok
             //invoke the method
             Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
@@ -374,7 +375,8 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string GameTitle = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            string GameTitle = "";
+            GameTitle = GameTitle.PadRight(50, 'a'); //this should be ok
             //invoke the method
             Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
@@ -389,7 +391,8 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string GameTitle = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            string GameTitle = "";
+            GameTitle = GameTitle.PadRight(25, 'a'); //this should be ok
             //invoke the method
             Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
@@ -397,14 +400,15 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void GameTitleMaxPlusOne() 
+        public void GameTitleMaxPlusOne()
         {
             //create an instance of the class we want to create
             clsGame AnGame = new clsGame();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string GameTitle = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should fail
+            string GameTitle = "";
+            GameTitle = GameTitle.PadRight(51, 'a'); //this should fail
             //invoke the method
             Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
@@ -412,7 +416,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void GameTitleExtremeMax() 
+        public void GameTitleExtremeMax()
         {
             //create an instance of the class we want to create
             clsGame AnGame = new clsGame();
@@ -421,6 +425,124 @@ namespace Testing2
             //create some test data to pass to the method
             string GameTitle = "";
             GameTitle = GameTitle.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReleaseDateExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to release date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string ReleaseDate = TestDate.ToString();
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReleaseDateMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string ReleaseDate = TestDate.ToString();
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReleaseDateMin()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string ReleaseDate = TestDate.ToString();
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReleaseDateMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string ReleaseDate = TestDate.ToString();
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string ReleaseDate = TestDate.ToString();
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReleaseDateInvalidDate()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //set the ReleaseDate to a non date value
+            string ReleaseDate = "this is not a date!";
             //invoke the method
             Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct

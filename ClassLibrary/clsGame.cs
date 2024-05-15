@@ -159,20 +159,47 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
-            //if the GameTitle is blank
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the Gametitle is blank
             if (gameTitle.Length == 0)
             {
                 //record the error
                 Error = Error + "The game title may not be blank : ";
             }
-            //if the game title is greater than 50 characters
-            if (gameTitle.Length > 50) 
+            //if the game title is greater than 6 characters
+            if (gameTitle.Length > 50)
             {
                 //record the error
-                Error = Error + "The game title must be less than 50 characters : ";
+                Error = Error + "The house no must be less than 50 characters : ";
             }
+            DateTime DateComp = DateTime.Now.Date;
+
+            try 
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(releaseDate);
+                if (DateTemp < DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date";
+            }
+            
             //return any error messages
-            return "";
+            return Error;
+
         }
 
     }

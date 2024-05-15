@@ -26,7 +26,7 @@ namespace ClassLibrary
         //private data member for the release date property
         private DateTime morderDate;
         //orderDate public property
-        public DateTime orderDate
+        public DateTime OrderDate
         {
             get
             {
@@ -44,7 +44,7 @@ namespace ClassLibrary
         //private data member for the order id property
         private Int32 morderId;
         //orderID public property
-        public Int32 orderID
+        public Int32 OrderID
         {
             get
             {
@@ -62,10 +62,10 @@ namespace ClassLibrary
         //private data member for the price property
         private double morderAmount;
 
-        public bool morderStatus { get; private set; }
+        public bool mOrderStatus { get; private set; }
 
         //county no public property
-        public double orderAmount
+        public double OrderAmount
         {
             get
             {
@@ -82,7 +82,7 @@ namespace ClassLibrary
         //private data member for the order description property
         private string morderDescription;
         //house no public property
-        public string orderDescription
+        public string OrderDescription
         {
             get
             {
@@ -99,7 +99,7 @@ namespace ClassLibrary
 
         private string mshippingAddress;
         //house no public property
-        public string shippingAddress
+        public string ShippingAddress
         {
             get
             {
@@ -119,7 +119,7 @@ namespace ClassLibrary
 
 
         //orderQuantity public property
-        public Int32 orderQuantity
+        public Int32 OrderQuantity
         {
             get
             {
@@ -155,7 +155,7 @@ namespace ClassLibrary
                 mshippingAddress = Convert.ToString(DB.DataTable.Rows[0]["shippingAddress"]);
                 morderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["orderDate"]);
                 morderAmount = Convert.ToDouble(DB.DataTable.Rows[0]["orderAmount"]);
-                morderStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["orderStatus"]);
+                mOrderStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["orderStatus"]);
                 //return that everything worked OK
                 return true;
             }
@@ -165,6 +165,32 @@ namespace ClassLibrary
                 return false;
             }
 
+
+            public string Valid(string orderId, string orderDate, string orderStatus, string orderAmount, string orderQuantity, string orderDescription)
+            {
+                //create a string variable to store the error
+                String Error = "";
+                //if the orderId is blank
+                if (orderId.Length == 0)
+                {
+                    //record the error
+                    Error = Error + "The order id may not be blank : ";
+                }
+                //if the order id is greater than 10 characters
+                if (orderId.Length > 10)
+                {
+                    //record the error
+                    Error = Error + "The order id must be less than 10 characters : ";
+                }
+                //return any error messages
+                return "";
+            }
+
+        }
+
+        public string Valid(string orderId, string orderDate, string orderStatus, string orderAmount, string orderQuantity, string orderDescription)
+        {
+            throw new NotImplementedException();
         }
     }
 }

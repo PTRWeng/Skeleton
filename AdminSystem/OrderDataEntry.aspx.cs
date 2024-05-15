@@ -16,17 +16,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a instance of clsOrder
         clsOrder Order = new clsOrder();
         //capture order id
-        Order.orderID = Convert.ToInt32(txtorderId.Text);
+        Order.OrderID = Convert.ToInt32(txtorderId.Text);
         //capture active check box
         Order.Available = chkAvailable.Checked;
         //capture the amount
-        Order.orderAmount = Convert.ToDouble(txtorderAmount.Text);
+        Order.OrderAmount = Convert.ToDouble(txtorderAmount.Text);
         //capture the order Description
-        Order.orderDescription = Convert.ToString(txtorderDescription.Text);
+        Order.OrderDescription = Convert.ToString(txtorderDescription.Text);
         //capture order date
-        Order.orderDate = Convert.ToDateTime(DateTime.Now);
+        Order.OrderDate = Convert.ToDateTime(DateTime.Now);
         //capture the order quantity
-        Order.orderQuantity = Convert.ToInt32(txtorderQuantity.Text);
+        Order.OrderQuantity = Convert.ToInt32(txtorderQuantity.Text);
         //store the order in the session object
         Session["Order"] = Order;
         //navigate to the new page
@@ -53,11 +53,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             if (Found)
             {
                 // Display the values of the properties in the form
-                txtorderDescription.Text = AnOrder.orderDescription;
-                txtshippingAddress.Text = AnOrder.shippingAddress;
-                txtorderDate.Text = AnOrder.orderDate.ToString();
-                txtorderAmount.Text = AnOrder.orderAmount.ToString();
-                txtorderQuantity.Text = AnOrder.orderQuantity.ToString();
+                txtorderDescription.Text = AnOrder.OrderDescription;
+                txtshippingAddress.Text = AnOrder.ShippingAddress;
+                txtorderDate.Text = AnOrder.OrderDate.ToString();
+                txtorderAmount.Text = AnOrder.OrderAmount.ToString();
+                txtorderQuantity.Text = AnOrder.OrderQuantity.ToString();
                 chkAvailable.Checked = AnOrder.Available;
             }
             else

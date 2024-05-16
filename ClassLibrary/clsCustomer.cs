@@ -99,23 +99,23 @@ namespace ClassLibrary
         }
 
 
-             //private data member for the release date property
-             private string mCustomerAdress;
-             //orderDate public property
-              public string CustomerAdress
-              {
+         //private data member for the release date property
+         private string mCustomerAdress;
+         //orderDate public property
+         public string CustomerAdress
+         {
                    get
-                    {
+                   {
                 //this line of code sends data out of the property
                 return mCustomerAdress;
-                     }
+                   }
                  set
                  {
                 //this line of code allows data into the property
                 mCustomerAdress = value;
                  }
 
-              }
+         }
 
         //private data member for the release date property
         private int  mCustomerId;

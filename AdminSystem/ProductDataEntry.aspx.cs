@@ -18,21 +18,41 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsGame
         clsGame AnGame = new clsGame();
         //capture the GameTitle
-        AnGame.GameTitle = txtGameTitle.Text;
+        string GameTitle = txtGameTitle.Text;
         //capture the GameDescription
-        AnGame.GameDescription = txtGameDescription.Text;
+        string GameDescription = txtGameDescription.Text;
         //capture the GamePlatform
-        AnGame.GamePlatform = txtGamePlatform.Text;
+        string GamePlatform = txtGamePlatform.Text;
         //capture the RelaeseDate
-        AnGame.ReleaseDate = Convert.ToDateTime(txtReleaseDate.Text);
+        string ReleaseDate = txtReleaseDate.Text;
         //capture the Price
-        AnGame.Price = Convert.ToDouble(txtPrice.Text);
+        string Price = txtPrice.Text;
         //capture Available check box
-        AnGame.Available = chkAvailable.Checked;
-        //store the game in the session object
-        Session["AnGame"] = AnGame;
-        //navigate to the view page
-        Response.Redirect("ProductViewer.aspx");
+        string Available = chkAvailable.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+        if (Error == "")
+        {
+            //capture the game title
+            AnGame.GameTitle = GameTitle;
+            //capture the game description
+            AnGame.GameDescription = GameDescription;
+            //capture the game platform
+            AnGame.GamePlatform = GamePlatform;
+            //capture the release date
+            AnGame.ReleaseDate = Convert.ToDateTime(ReleaseDate);
+            //store the game in the session object
+            Session["AnGame"] = AnGame;
+            //navigate to the view page
+            Response.Redirect("ProductViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;  
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

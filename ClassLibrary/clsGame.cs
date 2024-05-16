@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace ClassLibrary
 {
@@ -155,7 +156,7 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string gameTitle, string gameDescription, string gamePlatform, string releaseDate, string price)
+        public string Valid(string gameTitle, string gameDescription, string gamePlatform, string releaseDate)
         {
             //create a string variable to store the error
             String Error = "";
@@ -171,7 +172,7 @@ namespace ClassLibrary
             if (gameTitle.Length > 50)
             {
                 //record the error
-                Error = Error + "The house no must be less than 50 characters : ";
+                Error = Error + "The game title must be less than 50 characters : ";
             }
             DateTime DateComp = DateTime.Now.Date;
 
@@ -196,7 +197,30 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The date was not a valid date";
             }
-            
+            //is the game description blank
+            if (gameDescription.Length == 0) 
+            {
+                //record the error
+                Error = Error + "The game description may not be blank";
+            }
+            //if the game description is too long
+            if (gameDescription.Length > 1000) 
+            {
+                //record the code
+                Error = Error + "THe game description must be less than 1000 characters";
+            }
+            //is the game platform blank
+            if (gamePlatform.Length == 0)
+            {
+                //record the error
+                Error = Error + "The game platform may not be blank : ";
+            }
+            //if the street is too long
+            if (gamePlatform.Length > 50)
+            {
+                //record the error
+                Error = Error + "The game pltform must be less than 50 characters : ";
+            }
             //return any error messages
             return Error;
 

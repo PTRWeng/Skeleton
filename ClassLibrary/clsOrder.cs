@@ -188,10 +188,6 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string orderId, string orderDate, string orderStatus, string orderAmount, string orderQuantity, string orderDescription)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 

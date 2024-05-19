@@ -31,9 +31,9 @@
             <asp:TextBox ID="txtStaffDateofBirth" runat="server" style="z-index: 1; left: 171px; top: 150px; position: absolute"></asp:TextBox>
         </p>
         <asp:Label ID="lblStaffNumber" runat="server" style="z-index: 1; left: 39px; top: 186px; position: absolute" Text="Number"></asp:Label>
-        <asp:TextBox ID="txtSatffNumber" runat="server" style="z-index: 1; left: 164px; top: 188px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtStaffNumber" runat="server" style="z-index: 1; left: 164px; top: 188px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblStaffAddress" runat="server" style="z-index: 1; left: 39px; top: 218px; position: absolute" Text="Address"></asp:Label>
-        <asp:TextBox ID="txtSatffAddress" runat="server" style="z-index: 1; left: 163px; top: 222px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtStaffAddress" runat="server" style="z-index: 1; left: 163px; top: 222px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblStaffEmail" runat="server" style="z-index: 1; left: 44px; top: 255px; position: absolute" Text="Email"></asp:Label>
         <p>
             <asp:TextBox ID="txtStaffEmail" runat="server" style="z-index: 1; left: 152px; top: 265px; position: absolute"></asp:TextBox>
@@ -41,7 +41,7 @@
         <asp:CheckBox ID="chkActive" runat="server" style="z-index: 1; left: 169px; top: 319px; position: absolute" Text="Active" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 34px; top: 357px; position: absolute"></asp:Label>
         <p>
-            <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 51px; top: 408px; position: absolute" Text="OK" />
+            <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 51px; top: 408px; position: absolute" Text="OK" OnClick="btnOK_Click" />
         </p>
         <p>
             <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 161px; top: 412px; position: absolute" Text="Cancel" />

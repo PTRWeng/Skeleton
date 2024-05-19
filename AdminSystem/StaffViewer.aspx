@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+    This is the Staff Viewer Page
     <form id="form1" runat="server">
         <div>
         </div>

@@ -164,27 +164,26 @@ namespace ClassLibrary
                 return false;
             }
 
+        }
 
-            public string Valid(string orderId, string orderDate, string orderStatus, string orderAmount, string orderQuantity, string orderDescription)
+        private static void Valid(string orderId, string orderDate, string orderStatus, string orderAmount, string orderQuantity, string orderDescription)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the orderId is blank
+            if (orderId.Length == 0)
             {
-                //create a string variable to store the error
-                String Error = "";
-                //if the orderId is blank
-                if (orderId.Length == 0)
-                {
-                    //record the error
-                    Error = Error + "The order id may not be blank : ";
-                }
-                //if the order id is greater than 10 characters
-                if (orderId.Length > 10)
-                {
-                    //record the error
-                    Error = Error + "The order id must be less than 10 characters : ";
-                }
-                //return any error messages
-                return "";
+                //record the error
+                Error = Error + "The order id may not be blank : ";
             }
-
+            //if the order id is greater than 10 characters
+            if (orderId.Length > 10)
+            {
+                //record the error
+                Error = Error + "The order id must be less than 10 characters : ";
+            }
+            //return any error messages
+            return;
         }
 
     }

@@ -288,9 +288,6 @@ namespace Testing3
         //good test data
         //create some test data to pass the method
         String orderId = "1";
-        String orderDate = DateTime.Now.ToShortDateString();
-        String orderStatus = "True";
-        String orderAmount = "13";
         String orderQuantity = "2";
         String orderDescription = "The Last Of Us";
 

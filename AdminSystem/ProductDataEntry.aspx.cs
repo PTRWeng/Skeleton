@@ -43,10 +43,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnGame.GamePlatform = GamePlatform;
             //capture the release date
             AnGame.ReleaseDate = Convert.ToDateTime(ReleaseDate);
-            //store the game in the session object
-            Session["AnGame"] = AnGame;
-            //navigate to the view page
-            Response.Redirect("ProductViewer.aspx");
+            //capture the price
+            AnGame.Price = Convert.ToDouble(Price);
+            //capture available
+            AnGame.Available = chkAvailable.Checked;
+            //create a new instance of the game collection
+            clsGameCollection GameList = new clsGameCollection();
+            //set the thisGame property
+            GameList.ThisGame = AnGame;
+            //add the new record
+            GameList.Add();
+            //redirect back to the list page
+            Response.Redirect("ProductList.aspx");
         }
         else
         {

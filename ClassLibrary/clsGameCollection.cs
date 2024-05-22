@@ -68,6 +68,23 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblGame_Insert");
         }
 
+        public void Update()
+        {
+            //update an existing record based on the values of thisGame
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the new stored procedure
+            DB.AddParameter("@GameID", mThisGame.GameID);
+            DB.AddParameter("@GameTitle", mThisGame.GameTitle);
+            DB.AddParameter("@GameDescription", mThisGame.GameDescription);
+            DB.AddParameter("@GamePlatform", mThisGame.GamePlatform);
+            DB.AddParameter("@ReleaseDate", mThisGame.ReleaseDate);
+            DB.AddParameter("@Price", mThisGame.Price);
+            DB.AddParameter("@Available", mThisGame.Available);
+            //execute the stored procedure
+            DB.Execute("sproc_tblGame_Update");
+        }
+
         public clsGameCollection()
         {
             //variable for the index

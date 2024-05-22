@@ -120,5 +120,44 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AllGame.ThisGame, TestItem);
         }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an intance of the class we want to create
+            clsGameCollection AllGame = new clsGameCollection();
+            //create the item of test data
+            clsGame TestItem = new clsGame();
+            //variable to store the primary kay
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Available = true;
+            TestItem.GameTitle = "Stellar Blade";
+            TestItem.GameDescription = "The future of humanity hangs in the balance in Stellar Blade, an all-new story-driven action adventure on PlayStation 5. Immerse yourself in a highly detailed post-apocalyptic world that blends beauty and horror to spectacular effect.";
+            TestItem.GamePlatform = "PS5";
+            TestItem.ReleaseDate = DateTime.Now;
+            TestItem.Price = 69.99;
+            //set ThisGame to the test data
+            AllGame.ThisGame = TestItem;
+            //add the record
+            PrimaryKey = AllGame.Add();
+            //set the primary key of the test data
+            TestItem.GameID = PrimaryKey;
+            //modify the test record
+            TestItem.Available = true;
+            TestItem.GameTitle = "Stellar Blade";
+            TestItem.GameDescription = "The future of humanity hangs in the balance in Stellar Blade, an all-new story-driven action adventure on PlayStation 5. Immerse yourself in a highly detailed post-apocalyptic world that blends beauty and horror to spectacular effect.";
+            TestItem.GamePlatform = "Xbox One";
+            TestItem.ReleaseDate = DateTime.Now;
+            TestItem.Price = 59.99;
+            //set the record based on the new test data
+            AllGame.ThisGame = TestItem;
+            //update the record
+            AllGame.Update();
+            //find the record
+            AllGame.ThisGame.Find(PrimaryKey);
+            //test to see if ThisGame matches the test data
+            Assert.AreEqual(AllGame.ThisGame, TestItem);
+        }
     }
 }

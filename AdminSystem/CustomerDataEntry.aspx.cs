@@ -39,6 +39,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
        clsCustomer AnCustomer = new clsCustomer();
         //capture the FirstName 
         AnCustomer.CustomerLastName = txtCustomerLastName.Text;
+        //store the LastName in the session object 
+        Session["AnCustomer"] = AnCustomer;
+        //navigate to the view page
+        Response.Redirect("CustomerViewer.aspx");
+    }
+
+    protected void txtCustomerDateOfBirth_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }
 

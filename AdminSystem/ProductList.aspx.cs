@@ -59,4 +59,60 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to edit";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be deleted
+        Int32 GameID;
+        //if a record has been selected from the list
+        if(lstGameList.SelectedIndex != -1)
+        {
+            //geet the primary key value of the record delte
+            GameID = Convert.ToInt32(lstGameList.SelectedValue);
+            //store the data in the session object
+            Session["GameID"] = GameID;
+            //redirect to the delete page
+            Response.Redirect("ProductConfirmDelete.aspx");
+        }
+        else //if no record has been selected
+        {
+            //display an error message
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the game object
+        clsGameCollection AnGame = new clsGameCollection();
+        //retrieve the value of game title from the presentation layer
+        AnGame.ReportByGameTitle(txtFilter.Text);
+        //set the data source to the list of games in the collection
+        lstGameList.DataSource = AnGame.GameList;
+        //set the name of the primary key
+        lstGameList.DataValueField = "GameID";
+        //set the name of the feild to display
+        lstGameList.DataTextField = "GameTitle";
+        //bind the data to the list
+        lstGameList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the game object
+        clsGameCollection AnGame = new clsGameCollection();
+        //set an empty string
+        AnGame.ReportByGameTitle("");
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        //set the data source to the list of games in the collection
+        //set the data source to the list of games in the collection
+        lstGameList.DataSource = AnGame.GameList;
+        //set the name of the primary key
+        lstGameList.DataValueField = "GameID";
+        //set the name of the feild to display
+        lstGameList.DataTextField = "GameTitle";
+        //bind the data to the list
+        lstGameList.DataBind();
+    }
 }

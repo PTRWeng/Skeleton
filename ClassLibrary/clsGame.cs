@@ -156,7 +156,7 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string gameTitle, string gameDescription, string gamePlatform, string releaseDate)
+        public string Valid(string gameTitle, string gameDescription, string gamePlatform, string releaseDate, string price)
         {
             //create a string variable to store the error
             String Error = "";
@@ -176,7 +176,7 @@ namespace ClassLibrary
             }
             DateTime DateComp = DateTime.Now.Date;
 
-            try 
+            try
             {
                 //copy the dateAdded value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(releaseDate);
@@ -198,13 +198,13 @@ namespace ClassLibrary
                 Error = Error + "The date was not a valid date";
             }
             //is the game description blank
-            if (gameDescription.Length == 0) 
+            if (gameDescription.Length == 0)
             {
                 //record the error
                 Error = Error + "The game description may not be blank";
             }
             //if the game description is too long
-            if (gameDescription.Length > 1000) 
+            if (gameDescription.Length > 1000)
             {
                 //record the code
                 Error = Error + "THe game description must be less than 1000 characters";
@@ -220,6 +220,12 @@ namespace ClassLibrary
             {
                 //record the error
                 Error = Error + "The game pltform must be less than 50 characters : ";
+            }
+            //is the price blank
+            if (price.Length == 0)
+            {
+                //record the error
+                Error = Error + "The price may not be blank : ";
             }
             //return any error messages
             return Error;

@@ -159,5 +159,93 @@ namespace Testing2
             //test to see if ThisGame matches the test data
             Assert.AreEqual(AllGame.ThisGame, TestItem);
         }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsGameCollection AllGames = new clsGameCollection();
+            //create the item of test data
+            clsGame TestItem = new clsGame();
+            //variable to store the primary kay
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Available = true;
+            TestItem.GameID = 1;
+            TestItem.GameTitle = "Stellar Blade";
+            TestItem.GameDescription = "The future of humanity hangs in the balance in Stellar Blade, an all-new story-driven action adventure on PlayStation 5. Immerse yourself in a highly detailed post-apocalyptic world that blends beauty and horror to spectacular effect.";
+            TestItem.GamePlatform = "PS5";
+            TestItem.ReleaseDate = DateTime.Now;
+            TestItem.Price = 69.99;
+            //set ThisGame to the test data
+            AllGames.ThisGame = TestItem;
+            //add the record
+            PrimaryKey = AllGames.Add();
+            //set the primary key of the test data
+            TestItem.GameID = PrimaryKey;
+            //find the record
+            AllGames.ThisGame.Find(PrimaryKey);
+            //delete the record
+            AllGames.Delete();
+            //now find the record
+            Boolean Found = AllGames.ThisGame.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByGameTitleMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsGameCollection AllGames = new clsGameCollection();
+            //create an instance of the filtered data
+            clsGameCollection FilteredGames = new clsGameCollection();
+            //apply a blank string (should return all records);
+            FilteredGames.ReportByGameTitle("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllGames.Count, FilteredGames.Count);
+        }
+
+        [TestMethod]
+        public void ReportByGameTitleNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsGameCollection FilteredGames = new clsGameCollection();
+            //apply a game title that doesn't exist
+            FilteredGames.ReportByGameTitle("xxxxxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredGames.Count);
+        }
+
+        [TestMethod]
+        public void ReportByGameTitleTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsGameCollection FilteredGames = new clsGameCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a game title that doesn't exist
+            FilteredGames.ReportByGameTitle("xxxxxx");
+            //check that the correct number of records are found
+            if (FilteredGames.Count == 2)
+            {
+                //check to see that the first record in 26
+                if (FilteredGames.GameList[0].GameID != 26)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 28
+                if (FilteredGames.GameList[1].GameID != 28)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no record
+            Assert.IsTrue(OK);
+        }
     }
 }

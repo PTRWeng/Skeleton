@@ -85,24 +85,57 @@ namespace ClassLibrary
             DB.Execute("sproc_tblGame_Update");
         }
 
+        public void Delete()
+        {
+            //deletes the record pointed to by thisGame
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@GameID", mThisGame.GameID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblGame_Delete");
+        }
+
+        public void ReportByGameTitle(string GameTitle)
+        {
+            //filters the records based on a full or partial game title
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //sent the GameTitle parameter to the database
+            DB.AddParameter("@GameTitle", GameTitle);
+            //execute the stored procedure
+            DB.Execute("sproc_tblGame_FilterByGameTitle");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
         public clsGameCollection()
         {
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
-            //object for the data connect
+            //object for data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblGame_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
             //get the count of records
             RecordCount = DB.Count;
+            //clear the private array list
+            mGamelist = new List<clsGame>();
             //while there are records to process
             while (Index < RecordCount)
             {
-                //create a blank game
+                //create a blank game object
                 clsGame AnGame = new clsGame();
-                //read in fields for the current record
+                //read in the fields from the current record
                 AnGame.GameID = Convert.ToInt32(DB.DataTable.Rows[Index]["GameID"]);
                 AnGame.GameTitle = Convert.ToString(DB.DataTable.Rows[Index]["GameTitle"]);
                 AnGame.GameDescription = Convert.ToString(DB.DataTable.Rows[Index]["GameDescription"]);

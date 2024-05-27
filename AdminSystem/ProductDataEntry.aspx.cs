@@ -44,7 +44,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store any error messages
         string Error = "";
         //validate the data
-        Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+        Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
         if (Error == "")
         {
             //capture the gmae id

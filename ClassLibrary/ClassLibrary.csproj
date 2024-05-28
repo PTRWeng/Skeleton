@@ -45,6 +45,7 @@
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsGame.cs" />
     <Compile Include="clsGameCollection.cs" />
+    <Compile Include="clsGameUser.cs" />
     <Compile Include="clsOrder.cs" />
     <Compile Include="clsStaff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

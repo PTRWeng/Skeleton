@@ -212,7 +212,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsGameCollection FilteredGames = new clsGameCollection();
             //apply a game title that doesn't exist
-            FilteredGames.ReportByGameTitle("xxxxxx");
+            FilteredGames.ReportByGameTitle("yyyyyyy");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredGames.Count);
         }

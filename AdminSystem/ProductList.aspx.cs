@@ -16,6 +16,13 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayGames();
         }
+
+        //create a new instance of clsGameUser
+        clsGameUser AnUser = new clsGameUser();
+        //get data from the session object
+        AnUser = (clsGameUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
 
     void DisplayGames()
@@ -114,5 +121,11 @@ public partial class _1_List : System.Web.UI.Page
         lstGameList.DataTextField = "GameTitle";
         //bind the data to the list
         lstGameList.DataBind();
+    }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

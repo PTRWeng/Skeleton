@@ -147,4 +147,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtPrice.Text = Product.ThisGame.Price.ToString();
         chkAvailable.Checked = Product.ThisGame.Available;
     }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }

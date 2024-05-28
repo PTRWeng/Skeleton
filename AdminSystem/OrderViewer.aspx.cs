@@ -16,17 +16,17 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the data from the session object
         AnOrder = (clsOrder)Session["Order"];
         //display the order id for the entry
-        Response.Write(AnOrder.orderID);
+        Response.Write(AnOrder.OrderID);
         //display the order quantity for this entry
-        Response.Write(AnOrder.orderQuantity + "\n");
+        Response.Write(AnOrder.OrderQuantity + "\n");
         //display the order Description for this entry
-        Response.Write(AnOrder.orderDescription + "\n");
+        Response.Write(AnOrder.OrderDescription + "\n");
         //display the order address for this entry
-        Response.Write(AnOrder.shippingAddress + "\n");
+        Response.Write(AnOrder.ShippingAddress + "\n");
         //display the order date for this entry
-        Response.Write(AnOrder.orderDate + "\n");
+        Response.Write(AnOrder.OrderDate + "\n");
         //display the order price for this entry
-        Response.Write(AnOrder.orderAmount + "\n");
+        Response.Write(AnOrder.OrderAmount + "\n");
         //display the order available for this entry
         Response.Write(AnOrder.Available);
     }

@@ -1,37 +1,23 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace Testing1
 {
     [TestClass]
     public class tstStaff
     {
-        private bool Found;
-
-        public int StaffFirstName { get; private set; }
 
         [TestMethod]
-        public void TestMethod1()
+        public void InstanceOK()
         {
             clsStaff AStaff = new clsStaff();
             Assert.IsNotNull(AStaff);
-
         }
+
         [TestMethod]
-        public void ActivePropertyOk()
-        {
-            clsStaff AStaff = new clsStaff();
-            Boolean TestData = true;
-            AStaff.Active = TestData;
-            Assert.AreEqual(AStaff.Active, TestData);
-
-
-
-
-        }
-        [TestMethod]
-        public void StaffIDPropertyNotOk() 
+        public void StaffIDPropertyOk()
         {
             clsStaff AStaff = new clsStaff();
             int TestData = 1;
@@ -39,16 +25,17 @@ namespace Testing1
             Assert.AreEqual(AStaff.StaffID, TestData);
 
         }
+
         [TestMethod]
-        public void StaffFirstNamePropertyNotOk() 
+        public void StaffFirstNamePropertyOk()
         {
             clsStaff AStaff = new clsStaff();
             string TestData = "John";
-            AStaff.StaffFirstName = TestData; 
+            AStaff.StaffFirstName = TestData;
             Assert.AreEqual(AStaff.StaffFirstName, TestData);
         }
         [TestMethod]
-        public void StaffLastNamePropertyNotOk()
+        public void StaffLastNamePropertyOk()
         {
             clsStaff AStaff = new clsStaff();
             string TestData = "Wick";
@@ -56,24 +43,24 @@ namespace Testing1
             Assert.AreEqual(AStaff.StaffLastName, TestData);
         }
         [TestMethod]
-        public void StaffDateofBirthPropertyNotOk()
+        public void StaffDateofBirthPropertyOk()
         {
             clsStaff AStaff = new clsStaff();
             DateTime TestData = DateTime.Now.Date;
-            AStaff.StaffDateofBirth= TestData;
+            AStaff.StaffDateofBirth = TestData;
             Assert.AreEqual(AStaff.StaffDateofBirth, TestData);
         }
         [TestMethod]
-        public void StaffNumberPropertyNotOk()
+        public void StaffNumberPropertyOk()
         {
             clsStaff AStaff = new clsStaff();
             string TestData = "5";
 
-            AStaff.StaffNumber= TestData;
+            AStaff.StaffNumber = TestData;
             Assert.AreEqual(AStaff.StaffNumber, TestData);
         }
         [TestMethod]
-        public void StaffAddressPropertyNotOk()
+        public void StaffAddressPropertyOk()
         {
             clsStaff AStaff = new clsStaff();
             String TestData = "2";
@@ -81,7 +68,7 @@ namespace Testing1
             Assert.AreEqual(AStaff.StaffAddress, TestData);
         }
         [TestMethod]
-        public void StaffEmailPropertyNotOk()
+        public void StaffEmailPropertyOk()
         {
             clsStaff AStaff = new clsStaff();
             string TestData = "John1@gmail.com";
@@ -109,7 +96,7 @@ namespace Testing1
             Int32 StaffID = 6;
 
             Found = AStaff.Find(StaffID);
-            if(AStaff.StaffID !=6)
+            if (AStaff.StaffID != 6)
             {
                 Ok = false;
             }

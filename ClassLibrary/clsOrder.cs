@@ -148,7 +148,7 @@ namespace ClassLibrary
                 mshippingAddress = Convert.ToString(DB.DataTable.Rows[0]["shippingAddress"]);
                 morderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["orderDate"]);
                 morderAmount = Convert.ToDouble(DB.DataTable.Rows[0]["orderAmount"]);
-                mOrderStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["orderStatus"]);
+                //mOrderStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["orderStatus"]);
                 //return that everything worked OK
                 return true;
             }

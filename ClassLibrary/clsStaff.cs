@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Net;
 
 namespace ClassLibrary
 {
     public class clsStaff
     {
 
-        private Boolean mActive;
         private int mStaffID ;
         private string mStaffFirstName ;
         private string mStaffLastName ;
@@ -14,20 +14,8 @@ namespace ClassLibrary
         private string mStaffAddress ;
         private string mStaffEmail ;
 
-        public bool Active
-        {
-            get
-            {
 
-                return mActive;
-
-            }
-            set
-            {
-              mActive=  value;
-            }
-        }
-        public int StaffID
+        public int Staff
 
         {
             get
@@ -103,19 +91,25 @@ namespace ClassLibrary
 
         public bool Find(int StaffID)
         {
-            mActive = true;
-            mStaffID= 6;
-            mStaffFirstName = "Wick";
-            mStaffLastName = "John";
-            mStaffDateofBirth = DateTime.Now;
-            mStaffNumber = "0111";
-            mStaffAddress = "LE7";
-            mStaffEmail = "Hamza12@gmail.com";
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffID", StaffID);
+            DB.Execute("stpr_tblStaff_FilterByStaffID");
+            if (DB.Count == 1)
+            {
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                mStaffFirstName = Convert.ToString(DB.DataTable.Rows[0]["StaffFirstName"]);
+                mStaffLastName = Convert.ToString(DB.DataTable.Rows[0]["StaffLastName"]);
+                mStaffNumber = Convert.ToString(DB.DataTable.Rows[0]["StaffNumber"]);
+                mStaffAddress = Convert.ToString(DB.DataTable.Rows[0]["StaffAddress"]);
+                mStaffEmail = Convert.ToString(DB.DataTable.Rows[0]["StaffEmail"]);
+                mStaffDateofBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["StaffDateofBirth"]);
 
-
-
-
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

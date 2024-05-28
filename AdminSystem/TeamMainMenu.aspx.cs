@@ -11,4 +11,10 @@ public partial class TeamMainMenu : System.Web.UI.Page
     {
 
     }
+
+    protected void btnGames_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the game product login page
+        Response.Redirect("ProductLogin.aspx");
+    }
 }

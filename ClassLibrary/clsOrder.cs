@@ -61,9 +61,6 @@ namespace ClassLibrary
 
         //private data member for the price property
         private double morderAmount;
-
-        public bool mOrderStatus { get; private set; }
-
         //county no public property
         public double OrderAmount
         {
@@ -116,8 +113,6 @@ namespace ClassLibrary
 
         //private data member for the order quantity property
         private Int32 morderQuantity;
-
-
         //orderQuantity public property
         public Int32 OrderQuantity
         {
@@ -162,7 +157,6 @@ namespace ClassLibrary
                 //return false indicating there is a problem
                 return false;
             }
-
         }
 
         private static void Valid(string orderId, string orderDate, string orderStatus, string orderAmount, string orderQuantity, string orderDescription)

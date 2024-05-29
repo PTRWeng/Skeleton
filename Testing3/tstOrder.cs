@@ -294,7 +294,6 @@ namespace Testing3
 
         //good test data
         //create some test data to pass the method
-        string orderId = "1";
         string orderQuantity = "2";
         string orderDescription = "The Last Of Us";
         string orderAmount = "13";

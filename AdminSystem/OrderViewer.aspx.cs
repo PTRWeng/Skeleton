@@ -16,7 +16,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the data from the session object
         AnOrder = (clsOrder)Session["Order"];
         //display the order id for the entry
-        Response.Write(AnOrder.orderID);
+        Response.Write(AnOrder.orderId);
         //display the order quantity for this entry
         Response.Write(AnOrder.orderQuantity + "\n");
         //display the order Description for this entry
@@ -28,6 +28,6 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the order price for this entry
         Response.Write(AnOrder.orderAmount + "\n");
         //display the order available for this entry
-        Response.Write(AnOrder.Available);
+        Response.Write(AnOrder.orderStatus);
     }
 }

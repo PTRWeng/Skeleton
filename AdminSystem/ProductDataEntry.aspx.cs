@@ -8,9 +8,21 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 GameID;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the game to be processed
+        GameID = Convert.ToInt32(Session["GameID"]);
+        if (IsPostBack == false)
+        {
+            //if this is the not a new record
+            if (GameID != -1)
+            {
+                //display the current data for the record
+                DisplayGame();
+            }
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -32,9 +44,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store any error messages
         string Error = "";
         //validate the data
-        Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+        Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
         if (Error == "")
         {
+            //capture the gmae id
+            AnGame.GameID = GameID;
             //capture the game title
             AnGame.GameTitle = GameTitle;
             //capture the game description
@@ -43,10 +57,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnGame.GamePlatform = GamePlatform;
             //capture the release date
             AnGame.ReleaseDate = Convert.ToDateTime(ReleaseDate);
-            //store the game in the session object
-            Session["AnGame"] = AnGame;
-            //navigate to the view page
-            Response.Redirect("ProductViewer.aspx");
+            //capture the price
+            AnGame.Price = Convert.ToDouble(Price);
+            //capture available
+            AnGame.Available = chkAvailable.Checked;
+            //create a new instance of the game collection
+            clsGameCollection GameList = new clsGameCollection();
+            
+            //if this is a new record i.e. GameID = -1 then add the data
+            if (GameID == -1)
+            {
+                //set the ThisGame property
+                GameList.ThisGame = AnGame;
+                //add the new record
+                GameList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                GameList.ThisGame.Find(GameID);
+                //set the ThisGame property
+                GameList.ThisGame = AnGame;
+                //update the record
+                GameList.Update();
+            }
+            //redirect back to the list page
+            Response.Redirect("ProductList.aspx");
         }
         else
         {
@@ -93,5 +130,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // Handle invalid input (non-integer value for GameID)
             lblError.Text = "Please enter a valid Game ID.";
         }
+    }
+
+    void DisplayGame()
+    {
+        //create an instance of the game book
+        clsGameCollection Product = new clsGameCollection();
+        //find the record to update
+        Product.ThisGame.Find(GameID);
+        //display the data for the record
+        txtgameID.Text = Product.ThisGame.GameID.ToString();
+        txtGameTitle.Text = Product.ThisGame.GameTitle.ToString();
+        txtGameDescription.Text = Product.ThisGame.GameDescription.ToString();
+        txtGamePlatform.Text = Product.ThisGame.GamePlatform.ToString();
+        txtReleaseDate.Text = Product.ThisGame.ReleaseDate.ToString();
+        txtPrice.Text = Product.ThisGame.Price.ToString();
+        chkAvailable.Checked = Product.ThisGame.Available;
+    }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

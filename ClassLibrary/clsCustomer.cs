@@ -33,7 +33,7 @@ namespace ClassLibrary
             //private data member for the release date property
              private DateTime mCustomerDateOfBirth;
             //orderDate public property
-             public DateTime CutomerDateOfBirth
+             public DateTime CustomerDateOfBirth
         {
             get
             {
@@ -119,6 +119,8 @@ namespace ClassLibrary
 
         //private data member for the release date property
         private int  mCustomerId;
+        private DateTime mDateAdded;
+
         //orderDate public property
         public int CustomerId
         {
@@ -134,6 +136,17 @@ namespace ClassLibrary
             }
 
         }
+
+        //*****FIND METHOD*****//
+        public bool Find(int CustomerId)
+        {
+            //set the private data members to the test Data value
+            mCustomerId = 1;
+            mDateAdded = Convert.ToDateTime("23/12/2022");
+           //always return true
+           return true;
+        }
     }
-    
+
+
 }

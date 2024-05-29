@@ -19,7 +19,7 @@
         <asp:TextBox ID="txtCustomerFirstName" runat="server" style="z-index: 1; left: 191px; top: 202px; position: absolute" height="22px" width="128px"></asp:TextBox>
         <asp:TextBox ID="txtCustomerLastName" runat="server" style="z-index: 1; left: 191px; top: 232px; position: absolute; height: 18px; width: 128px;" OnTextChanged="txtCustomerLastName_TextChanged"></asp:TextBox>
         <asp:TextBox ID="txtCustomerEmailAdress" runat="server" style="z-index: 1; left: 191px; top: 263px; position: absolute" height="22px" width="128px"></asp:TextBox>
-        <asp:TextBox ID="txtCustomerDateOfBirth" runat="server" style="z-index: 1; left: 191px; top: 294px; position: absolute" height="22px" width="128px"></asp:TextBox>
+        <asp:TextBox ID="txtCustomerDateOfBirth" runat="server" style="z-index: 1; left: 191px; top: 294px; position: absolute" height="22px" width="128px" OnTextChanged="txtCustomerDateOfBirth_TextChanged"></asp:TextBox>
         <asp:TextBox ID="txtCustomerAddress" runat="server" style="z-index: 1; left: 191px; top: 333px; position: absolute" height="22px" width="128px"></asp:TextBox>
         <asp:Button ID="btnCancle" runat="server" style="z-index: 1; left: 140px; top: 440px; position: absolute" Text="Cancle" />
         <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 270px; top: 438px; position: absolute" Text="Find" OnClick="btnFind_Click" />

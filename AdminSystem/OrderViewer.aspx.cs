@@ -9,7 +9,7 @@ using ClassLibrary;
 
 public partial class _1Viewer : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
     {
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();

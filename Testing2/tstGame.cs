@@ -291,6 +291,7 @@ namespace Testing2
         String GameDescription = "The future of humanity hangs in the balance in Stellar Blade, an all-new story-driven action adventure on PlayStation 5. Immerse yourself in a highly detailed post-apocalyptic world that blends beauty and horror to spectacular effect.";
         String GamePlatform = "PS5";
         String ReleaseDate = DateTime.Now.ToShortDateString();
+        String Price = "69.99";
 
         [TestMethod]
         public void ValidMethodOK()
@@ -300,7 +301,7 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -315,7 +316,7 @@ namespace Testing2
             //create some test data to pass to the method
             String GameTitle = ""; //this should trigger an error
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -330,7 +331,7 @@ namespace Testing2
             //create some test data to pass to the method
             string GameTitle = "a"; //this should be ok
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -345,7 +346,7 @@ namespace Testing2
             //create some test data to pass to the method
             string GameTitle = "aa"; //this should be ok
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -361,7 +362,7 @@ namespace Testing2
             string GameTitle = "";
             GameTitle = GameTitle.PadRight(49, 'a'); //this should  be ok
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -377,7 +378,7 @@ namespace Testing2
             string GameTitle = "";
             GameTitle = GameTitle.PadRight(50, 'a'); //this should be ok
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -393,7 +394,7 @@ namespace Testing2
             string GameTitle = "";
             GameTitle = GameTitle.PadRight(25, 'a'); //this should be ok
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -409,7 +410,7 @@ namespace Testing2
             string GameTitle = "";
             GameTitle = GameTitle.PadRight(51, 'a'); //this should fail
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -425,7 +426,7 @@ namespace Testing2
             string GameTitle = "";
             GameTitle = GameTitle.PadRight(500, 'a'); //this should fail
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -446,7 +447,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -467,7 +468,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -486,7 +487,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -507,7 +508,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -528,7 +529,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -543,7 +544,7 @@ namespace Testing2
             //set the ReleaseDate to a non date value
             string ReleaseDate = "this is not a date!";
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -558,7 +559,7 @@ namespace Testing2
             //this should fail
             string GameDescription = "";
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -573,7 +574,7 @@ namespace Testing2
             //this should pass
             string GameDescription = "a";
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -587,7 +588,7 @@ namespace Testing2
             //this should pass
             string GameDescription = "aa";
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -602,7 +603,7 @@ namespace Testing2
             string GameDescription = "";
             GameDescription = GameDescription.PadRight(999, 'a');
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -618,7 +619,7 @@ namespace Testing2
             string GameDescription = "";
             GameDescription = GameDescription.PadRight(1000, 'a');
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -633,7 +634,7 @@ namespace Testing2
             string GameDescription = "";
             GameDescription = GameDescription.PadRight(1001, 'a');
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -648,7 +649,7 @@ namespace Testing2
             string GameDescription = "";
             GameDescription = GameDescription.PadRight(500, 'a');
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -663,7 +664,7 @@ namespace Testing2
             //this should fail
             string GamePlatform = "";
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -677,7 +678,7 @@ namespace Testing2
             //this should pass
             string GamePlatform = "a";
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -692,7 +693,7 @@ namespace Testing2
             //this should pass
             string GamePlatform = "aa";
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -707,7 +708,7 @@ namespace Testing2
             string GamePlatform = "";
             GamePlatform = GamePlatform.PadRight(49, 'a');
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -722,7 +723,7 @@ namespace Testing2
             string GamePlatform = "";
             GamePlatform = GamePlatform.PadRight(50, 'a');
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -737,7 +738,7 @@ namespace Testing2
             //this should fail
             string GamePlatform = "";
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -752,10 +753,24 @@ namespace Testing2
             string GamePlatform = "";
             GamePlatform = GamePlatform.PadRight(25, 'a');
             //invoke the method
-            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate);
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
+        public void GamePriceMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsGame AnGame = new clsGame();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string Price = "";
+            //invoke the method
+            Error = AnGame.Valid(GameTitle, GameDescription, GamePlatform, ReleaseDate, Price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }

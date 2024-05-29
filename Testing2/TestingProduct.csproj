@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tstGame.cs" />
+    <Compile Include="tstGameCollection.cs" />
+    <Compile Include="tstGameUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

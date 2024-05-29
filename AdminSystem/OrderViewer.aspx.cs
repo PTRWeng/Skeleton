@@ -9,25 +9,25 @@ using ClassLibrary;
 
 public partial class _1Viewer : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
     {
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //get the data from the session object
         AnOrder = (clsOrder)Session["Order"];
         //display the order id for the entry
-        Response.Write(AnOrder.OrderID);
+        Response.Write(AnOrder.orderId);
         //display the order quantity for this entry
-        Response.Write(AnOrder.OrderQuantity + "\n");
+        Response.Write(AnOrder.orderQuantity + "\n");
         //display the order Description for this entry
-        Response.Write(AnOrder.OrderDescription + "\n");
+        Response.Write(AnOrder.orderDescription + "\n");
         //display the order address for this entry
-        Response.Write(AnOrder.ShippingAddress + "\n");
+        Response.Write(AnOrder.shippingAddress + "\n");
         //display the order date for this entry
-        Response.Write(AnOrder.OrderDate + "\n");
+        Response.Write(AnOrder.orderDate + "\n");
         //display the order price for this entry
-        Response.Write(AnOrder.OrderAmount + "\n");
+        Response.Write(AnOrder.orderAmount + "\n");
         //display the order available for this entry
-        Response.Write(AnOrder.Available);
+        Response.Write(AnOrder.orderStatus);
     }
 }

@@ -1,24 +1,25 @@
-﻿using System;
+using System;
+using System.IO;
+
 
 namespace ClassLibrary
 {
     public class clsOrder
     {
-
-        //private data member for the available property
-        private Boolean mAvailable;
+        //private data member for the status property
+        private Boolean morderStatus;
         //active public property
-        public bool Available
+        public bool orderStatus
         {
             get
             {
                 //this line of code sends data out of the property
-                return mAvailable;
+                return morderStatus;
             }
             set
             {
                 //this line of code allows data into the property
-                mAvailable = value;
+                morderStatus = value;
             }
         }
 
@@ -26,7 +27,7 @@ namespace ClassLibrary
         //private data member for the release date property
         private DateTime morderDate;
         //orderDate public property
-        public DateTime OrderDate
+        public DateTime orderDate
         {
             get
             {
@@ -44,7 +45,7 @@ namespace ClassLibrary
         //private data member for the order id property
         private Int32 morderId;
         //orderID public property
-        public Int32 OrderID
+        public int orderId
         {
             get
             {
@@ -58,11 +59,10 @@ namespace ClassLibrary
             }
         }
 
-
-        //private data member for the price property
+        //private data member for the order amount
         private double morderAmount;
         //county no public property
-        public double OrderAmount
+        public double orderAmount
         {
             get
             {
@@ -79,7 +79,7 @@ namespace ClassLibrary
         //private data member for the order description property
         private string morderDescription;
         //house no public property
-        public string OrderDescription
+        public string orderDescription
         {
             get
             {
@@ -94,9 +94,10 @@ namespace ClassLibrary
         }
 
 
+        //private data member for the shipping address property
         private string mshippingAddress;
-        //house no public property
-        public string ShippingAddress
+        //shipping address public property
+        public string shippingAddress
         {
             get
             {
@@ -114,7 +115,7 @@ namespace ClassLibrary
         //private data member for the order quantity property
         private Int32 morderQuantity;
         //orderQuantity public property
-        public Int32 OrderQuantity
+        public int orderQuantity
         {
             get
             {
@@ -129,26 +130,31 @@ namespace ClassLibrary
             }
         }
 
+        public static DateTime DateTemp { get; private set; }
 
-        public bool Find(int OrderID)
+
+        /****** FIND METHOD ******/
+
+
+        public bool Find(int orderId)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
             //add the parameter for the order id to search for
-            DB.AddParameter("@OrderID", OrderID);
+            DB.AddParameter("@orderId", orderId);
             //execute the stored procedure
-            DB.Execute("sproc_tblOrder_FilterByOrderID");
+            DB.Execute("sproc_tblOrder_FilterByorderId");
             //if one recode is found (there should be either one or zero)
             if (DB.Count == 1)
             {
                 //copy the data from the database to the private data members
                 morderId = Convert.ToInt32(DB.DataTable.Rows[0]["orderId"]);
-                morderQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["orderQuatity"]);
+                morderQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["orderQuantity"]);
                 morderDescription = Convert.ToString(DB.DataTable.Rows[0]["orderDescription"]);
                 mshippingAddress = Convert.ToString(DB.DataTable.Rows[0]["shippingAddress"]);
                 morderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["orderDate"]);
                 morderAmount = Convert.ToDouble(DB.DataTable.Rows[0]["orderAmount"]);
-                //mOrderStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["orderStatus"]);
+                morderStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["orderStatus"]);
                 //return that everything worked OK
                 return true;
             }
@@ -159,10 +165,10 @@ namespace ClassLibrary
             }
         }
 
-        private static void Valid(string orderId, string orderDate, string orderStatus, string orderAmount, string orderQuantity, string orderDescription)
+        public string Valid(string orderId, string orderQuantity, string orderDescription, string orderAmount, string orderDate)
         {
             //create a string variable to store the error
-            String Error = "";
+            string Error = "";
             //if the orderId is blank
             if (orderId.Length == 0)
             {
@@ -175,10 +181,73 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The order id must be less than 10 characters : ";
             }
+
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(orderId);
+
+                DateTime DateComp = DateTime.Now.Date;
+                if (DateTemp < DateComp) //compare dateAdded with Date
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            //is the order id blank
+            if (orderId.Length == 0)
+            {
+                //record the error
+                Error = Error + "The order id may not be blank : ";
+            }
+
+
+            //if the order id is too long
+            if (orderId.Length > 9)
+            {
+                //record the error
+                Error = Error + "The order id must be less than 9 characters : ";
+            }
+            //is the order id blank
+            if (orderId.Length == 0)
+            {
+                //record the error
+                Error = Error + "The order id may not be blank : ";
+            }
+            //if the order id is too long
+            if (orderId.Length > 50)
+            {
+                //record the error
+                Error = Error + "The order id must be less than 50 characters : ";
+            }
+            //is the order id blank
+            if (orderId.Length == 0)
+            {
+                //record the error
+                Error = Error + "The order id may not be blank : ";
+            }
+            //if the order id is too long
+            if (orderId.Length > 50)
+            {
+                //record the error
+                Error = Error + "The order id must be less than 50 characters : ";
+            }
             //return any error messages
-            return;
+            return Error;
         }
 
+        
     }
 }
 

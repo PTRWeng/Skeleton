@@ -9,7 +9,6 @@ namespace ClassLibrary
         }
 
         public bool Active { get; set; }
-        public DateTime DateAdded { get; set; }
 
         //private data member for the available property
         private Boolean mPlacedOrder;
@@ -57,12 +56,11 @@ namespace ClassLibrary
                 //this line of code sends data out of the property
                 return mCustomerFirstName;
             }
-            set
-            {
+
+            set =>
                 //this line of code allows data into the property
                 mCustomerFirstName = value;
             }
-        }
 
         //private data member for the release date property
         private string mCustomerLastName;
@@ -119,7 +117,6 @@ namespace ClassLibrary
 
         //private data member for the release date property
         private int  mCustomerId;
-        private DateTime mDateAdded;
 
         //orderDate public property
         public int CustomerId

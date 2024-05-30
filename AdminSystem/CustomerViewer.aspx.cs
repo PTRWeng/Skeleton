@@ -25,7 +25,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the date of birth of the customer 
         Response.Write(AnCustomer.CustomerDateOfBirth);
         //display the address of the customer
-        Response.Write(AnCustomer.CustomerAdress);
+        Response.Write(AnCustomer.CustomerAddress);
         //display the placed order for this entry
         Response.Write(AnCustomer.PlacedOrder);
     }

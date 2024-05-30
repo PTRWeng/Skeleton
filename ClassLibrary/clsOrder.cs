@@ -165,89 +165,105 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string orderId, string orderQuantity, string orderDescription, string orderAmount, string orderDate)
-        {
-            //create a string variable to store the error
-            string Error = "";
-            //if the orderId is blank
-            if (orderId.Length == 0)
-            {
-                //record the error
-                Error = Error + "The order id may not be blank : ";
-            }
-            //if the order id is greater than 10 characters
-            if (orderId.Length > 10)
-            {
-                //record the error
-                Error = Error + "The order id must be less than 10 characters : ";
-            }
-
-            try
-            {
-                //copy the dateAdded value to the DateTemp variable
-                DateTemp = Convert.ToDateTime(orderId);
-
-                DateTime DateComp = DateTime.Now.Date;
-                if (DateTemp < DateComp) //compare dateAdded with Date
-                {
-                    //record the error
-                    Error = Error + "The date cannot be in the past : ";
-                }
-                //check to see if the date is greater than today's date
-                if (DateTemp > DateComp)
-                {
-                    //record the error
-                    Error = Error + "The date cannot be in the future : ";
-                }
-            }
-            catch
-            {
-                //record the error
-                Error = Error + "The date was not a valid date : ";
-            }
-            //is the order id blank
-            if (orderId.Length == 0)
-            {
-                //record the error
-                Error = Error + "The order id may not be blank : ";
-            }
-
-
-            //if the order id is too long
-            if (orderId.Length > 9)
-            {
-                //record the error
-                Error = Error + "The order id must be less than 9 characters : ";
-            }
-            //is the order id blank
-            if (orderId.Length == 0)
-            {
-                //record the error
-                Error = Error + "The order id may not be blank : ";
-            }
-            //if the order id is too long
-            if (orderId.Length > 50)
-            {
-                //record the error
-                Error = Error + "The order id must be less than 50 characters : ";
-            }
-            //is the order id blank
-            if (orderId.Length == 0)
-            {
-                //record the error
-                Error = Error + "The order id may not be blank : ";
-            }
-            //if the order id is too long
-            if (orderId.Length > 50)
-            {
-                //record the error
-                Error = Error + "The order id must be less than 50 characters : ";
-            }
-            //return any error messages
-            return Error;
-        }
+       
 
         
+            
+
+        public string Valid(string orderQuantity, string orderDescription, string orderAmount, string orderDate, string shippingAddress)
+        {
+                //create a string variable to store the error
+                string Error = "";
+                //if the orderId is blank
+                if (orderQuantity.Length == 0)
+                {
+                    //record the error
+                    Error = Error + "The order id may not be blank : ";
+                }
+                //if the order id is greater than 10 characters
+                if (orderQuantity.Length > 10)
+                {
+                    //record the error
+                    Error = Error + "The order id must be less than 10 characters : ";
+                }
+
+                try
+                {
+                    //copy the dateAdded value to the DateTemp variable
+                    DateTemp = Convert.ToDateTime(orderDate);
+
+                    DateTime DateComp = DateTime.Now.Date;
+                    if (DateTemp < DateComp) //compare dateAdded with Date
+                    {
+                        //record the error
+                        Error = Error + "The date cannot be in the past : ";
+                    }
+                    //check to see if the date is greater than today's date
+                    if (DateTemp > DateComp)
+                    {
+                        //record the error
+                        Error = Error + "The date cannot be in the future : ";
+                    }
+                }
+                catch
+                {
+                    //record the error
+                    Error = Error + "The date was not a valid date : ";
+                }
+
+
+                //is the order id blank
+                if (orderDescription.Length == 0)
+                {
+                    //record the error
+                    Error = Error + "The order description may not be blank : ";
+                }
+
+
+                //if the order id is too long
+                if (orderDescription.Length > 50)
+                {
+                    //record the error
+                    Error = Error + "The order description must be less than 50 characters : ";
+                }
+
+
+                //is the order id blank
+                if (orderAmount.Length == 0)
+                {
+                    //record the error
+                    Error = Error + "The order id may not be blank : ";
+                }
+
+
+                //if the order id is too long
+                if (orderAmount.Length > 20)
+                {
+                    //record the error
+                    Error = Error + "The order amount must be less than 20 characters : ";
+                }
+
+
+                //is the order id blank
+                if (orderDate.Length == 0)
+                {
+                    //record the error
+                    Error = Error + "The order date may not be blank : ";
+                }
+
+
+                //if the order id is too long
+                if (shippingAddress.Length > 50)
+                {
+                    //record the error
+                    Error = Error + "The shipping address must be less than 50 characters : ";
+                }
+
+
+                //return any error messages
+                return Error;
+            }
+        }
     }
-}
+
 

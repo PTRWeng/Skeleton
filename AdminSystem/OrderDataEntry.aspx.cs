@@ -16,42 +16,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
 
-        Int32 orderId;
-        // Create a variable to store the result of the find operation
-        Boolean Found = false;
-
-        try
-        {
-            // Get the primary key entered by the user
-            orderId = Convert.ToInt32(txtorderId.Text);
-
-            // Find the record
-            Found = AnOrder.Find(orderId);
-
-            if (Found)
-            {
-                // Display the values of the properties in the form
-                txtorderDescription.Text = AnOrder.orderDescription;
-                txtshippingAddress.Text = AnOrder.shippingAddress;
-                txtorderDate.Text = AnOrder.orderDate.ToString();
-                txtorderAmount.Text = AnOrder.orderAmount.ToString();
-                txtorderQuantity.Text = AnOrder.orderQuantity.ToString();
-                chkStatus.Checked = AnOrder.orderStatus;
-            }
-            else
-            {
-                // Record not found, display an error message
-                lblError.Text = "Record with Order ID " + orderId + " is not found.";
-            }
-        }
-        catch (FormatException)
-        {
-            // Handle invalid input (non-integer value for GameID)
-            lblError.Text = "Please enter a valid Order ID.";
-        }
-    }
-
-
     protected void btnOk_Click(object sender, EventArgs e)
     {
         //create a instance of clsOrder

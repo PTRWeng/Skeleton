@@ -20,8 +20,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a instance of clsOrder
         clsOrder AnOrder = new clsOrder();
-        //capture order id
-        string orderId = txtorderId.Text;
         //capture active check box
         string orderStatus = chkStatus.Text;
         //capture the amount

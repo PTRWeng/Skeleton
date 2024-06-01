@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -30,10 +30,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string orderDate = txtorderDate.Text;
         //capture the order quantity
         string orderQuantity = txtorderQuantity.Text;
+        //capture the shipping address
+        string shippingAddress = txtshippingAddress.Text;
         //variable to store any error messages
         string Error = "";
         //validate the data
-        Error = AnOrder.Valid(orderId, orderDescription, orderQuantity, orderAmount, orderDate);
+        Error = AnOrder.Valid(orderId, orderDescription, orderQuantity, orderAmount, orderDate, shippingAddress);
         if (Error == "")
         {
             //capture the order id
@@ -46,6 +48,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.orderAmount = Convert.ToInt32(orderAmount);
             //capture the order date
             AnOrder.orderDate = Convert.ToDateTime(orderDate);
+            //capture the order date
+            AnOrder.shippingAddress = Convert.ToString(shippingAddress);
             //store the order in the session object
             Session["AnOrder"] = AnOrder;
             //navigate to the new page

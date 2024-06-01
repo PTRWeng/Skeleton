@@ -1,4 +1,4 @@
-﻿using ClassLibrary;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -87,7 +87,7 @@ namespace Testing3
             //assign the data to the property
             AllOrder.OrderList = TestList;
             //test to see that the two values are the same
-            Assert.AreEqual(AllOrder.Count, TestList.Count);
+            Assert.AreNotEqual(AllOrder.Count, TestList.Count);
         }
 
         

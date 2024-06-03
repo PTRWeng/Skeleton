@@ -20,7 +20,7 @@
         <asp:TextBox ID="txtGameDescription" runat="server" style="z-index: 1; left: 187px; top: 135px; position: absolute; height: 24px; width: 619px;"></asp:TextBox>
         <asp:Label ID="lblGamePlatform" runat="server" style="z-index: 1; left: 71px; top: 187px; position: absolute; right: 986px" Text="GamePlatform" width="105px"></asp:Label>
         <asp:TextBox ID="txtGamePlatform" runat="server" style="z-index: 1; left: 189px; top: 188px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblReleaseDate" runat="server" style="z-index: 1; left: 70px; top: 228px; position: absolute" Text="ReleaseDate" width="105px"></asp:Label>
+        <asp:Label ID="lblReleaseDate" runat="server" style="z-index: 1; left: 70px; top: 228px; position: absolute" Text="DateUpdated" width="105px"></asp:Label>
         <asp:TextBox ID="txtReleaseDate" runat="server" style="z-index: 1; left: 188px; top: 228px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblPrice" runat="server" style="z-index: 1; left: 76px; top: 271px; position: absolute" Text="Price" width="105px"></asp:Label>
         <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 188px; top: 268px; position: absolute; height: 18px"></asp:TextBox>

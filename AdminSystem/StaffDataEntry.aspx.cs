@@ -9,16 +9,38 @@ using System.Xml.Linq;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+
+    int StaffID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        StaffID = Convert.ToInt32(Session["StaffID"]);
+        if (IsPostBack == false)
+        {
+            if (StaffID != -1)
+            {
+                DisplayStaff();
+            }
+        }
+    }
 
+
+    void DisplayStaff()
+    {
+        clsStaffCollection StaffsAll = new clsStaffCollection();
+        StaffsAll.ThisStaff.Find(StaffID);
+
+        txtStaffID.Text = StaffsAll.ThisStaff.StaffID.ToString();
+        txtStaffFirstName.Text = StaffsAll.ThisStaff.StaffFirstName.ToString();
+        txtStaffLastName.Text = StaffsAll.ThisStaff.StaffLastName.ToString();
+        txtStaffDateofBirth.Text = StaffsAll.ThisStaff.StaffDateofBirth.ToString();
+        txtStaffNumber.Text = StaffsAll.ThisStaff.StaffNumber.ToString();
+        txtStaffAddress.Text = StaffsAll.ThisStaff.StaffAddress.ToString();
+        txtStaffEmail.Text = StaffsAll.ThisStaff.StaffEmail.ToString();
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
-
-
         string StaffFirstName = txtStaffFirstName.Text;
         string StaffLastName = txtStaffLastName.Text;
         string StaffDateofBirth = txtStaffDateofBirth.Text;
@@ -29,17 +51,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AStaff.Valid(StaffFirstName, StaffLastName, StaffDateofBirth, StaffNumber, StaffAddress, StaffEmail);
         if (Error == "")
         {
+            AStaff.StaffID = StaffID;
             AStaff.StaffFirstName = StaffFirstName;
             AStaff.StaffLastName = StaffLastName;
             AStaff.StaffDateofBirth = Convert.ToDateTime(StaffDateofBirth);
             AStaff.StaffNumber = StaffNumber;
             AStaff.StaffAddress = StaffAddress;
             AStaff.StaffEmail = StaffEmail;
-            Session["AStaff"] = AStaff;
-
-
-            /*
-             clsStaffCollection StaffList = new clsStaffCollection();
+            
+            
+            clsStaffCollection StaffList = new clsStaffCollection();
             if (StaffID == -1)
             {
                 StaffList.ThisStaff = AStaff;
@@ -51,9 +72,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 StaffList.ThisStaff = AStaff;
                 StaffList.Update();
             }
-            Response.Redirect("StaffsList.aspx"); 
+            Response.Redirect("StaffList.aspx"); 
               
-             */
         }
         else
         {

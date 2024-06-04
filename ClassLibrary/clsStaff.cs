@@ -15,7 +15,7 @@ namespace ClassLibrary
         private string mStaffEmail ;
 
 
-        public int Staff
+        public int StaffID
 
         {
             get

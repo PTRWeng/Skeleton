@@ -8,9 +8,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
-        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute" Text="Label"></asp:Label>
+        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 112px; top: 47px; position: absolute" Text="You sure to Delete this record?"></asp:Label>
+        <asp:Button ID="btnNo" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 267px; top: 112px; position: absolute" Text="No" />
+        <asp:Button ID="Yes" runat="server" OnClick="Yes_Click" style="z-index: 1; left: 118px; top: 112px; position: absolute;" Text="Yes" />
     </form>
 </body>
 </html>

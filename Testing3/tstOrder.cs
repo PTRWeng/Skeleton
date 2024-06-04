@@ -1,4 +1,4 @@
-﻿using ClassLibrary;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net;
 using System;
@@ -8,7 +8,8 @@ namespace Testing3
 {
     [TestClass]
     public class tstOrder
-    {        [TestMethod]
+    {       
+        [TestMethod]
         public void InstanceOK()
         {
             //crat an instance of the class we want to create
@@ -25,9 +26,9 @@ namespace Testing3
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property 
-            AnOrder.Available = TestData;
+            AnOrder.orderStatus = TestData;
             //test to see that the two values are the same 
-            Assert.AreEqual(AnOrder.Available, TestData);
+            Assert.AreEqual(AnOrder.orderStatus, TestData);
         }
         [TestMethod]
             
@@ -38,9 +39,9 @@ namespace Testing3
              //create some test data to assign to the property
              DateTime TestData = DateTime.Now.Date;
              //assign the data to the property
-             AnOrder.OrderDate = TestData;
+             AnOrder.orderDate = TestData;
              //test to see that the two values are the same
-             Assert.AreEqual(AnOrder.OrderDate, TestData);
+             Assert.AreEqual(AnOrder.orderDate, TestData);
         }
 
         [TestMethod]
@@ -52,9 +53,9 @@ namespace Testing3
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            AnOrder.OrderID = TestData;
+            AnOrder.orderId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.OrderID, TestData);
+            Assert.AreEqual(AnOrder.orderId, TestData);
         }
 
 
@@ -67,9 +68,9 @@ namespace Testing3
             //create some test data to assign to the property
             double TestData = 13;
             //assign the data to the property
-            AnOrder.OrderAmount = TestData;
+            AnOrder.orderAmount = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.OrderAmount, TestData);
+            Assert.AreEqual(AnOrder.orderAmount, TestData);
         }
 
         [TestMethod]
@@ -81,9 +82,9 @@ namespace Testing3
             //create some test data to assign to the property
             Int32 TestData = 2;
             //assign the data to the property
-            AnOrder.OrderQuantity = TestData;
+            AnOrder.orderQuantity = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.OrderQuantity, TestData);
+            Assert.AreEqual(AnOrder.orderQuantity, TestData);
         }
 
         [TestMethod]
@@ -95,9 +96,9 @@ namespace Testing3
             //create some test data to assign to the property
             string TestData = "25 grasmere street";
             //assign the data to the property
-            AnOrder.ShippingAddress = TestData;
+            AnOrder.shippingAddress = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.ShippingAddress, TestData);
+            Assert.AreEqual(AnOrder.shippingAddress, TestData);
         }
 
         [TestMethod]
@@ -109,10 +110,16 @@ namespace Testing3
             //create some test data to assign to the property
             string TestData = "Call Of Duty";
             //assign the data to the property
-            AnOrder.OrderDescription = TestData;
+            AnOrder.orderDescription = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.OrderDescription, TestData);
+            Assert.AreEqual(AnOrder.orderDescription, TestData);
         }
+
+
+
+        /******************FIND METHOD TEST******************/
+
+
 
         [TestMethod]
         public void FindMeMethodOK()
@@ -122,16 +129,16 @@ namespace Testing3
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 1;
+            Int32 orderId = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderId);
+            Found = AnOrder.Find(orderId);
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
 
 
         [TestMethod]
-        public void TestOrderIDFound()
+        public void TestorderIdFound()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -140,11 +147,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 6;
+            int orderId = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderID);
-            //check the game ID
-            if (AnOrder.OrderID != 6)
+            Found = AnOrder.Find(orderId);
+            //check the order ID
+            if (AnOrder.orderId != 1)
             {
                 OK = false;
             }
@@ -153,7 +160,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void TestOrderDateFound()
+        public void TestorderDateFound()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -162,20 +169,20 @@ namespace Testing3
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 6;
+            Int32 orderId = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderID);
+            Found = AnOrder.Find(orderId);
             //check the release date property
-            if (AnOrder.OrderDate != Convert.ToDateTime("29/09/2023"))
+            if (AnOrder.orderDate != Convert.ToDateTime("30/04/2024"))
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
         [TestMethod]
-        public void TestStatusFound()
+        public void TestorderStatusFound()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -184,11 +191,11 @@ namespace Testing3
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 6;
+            Int32 orderId = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderID);
+            Found = AnOrder.Find(orderId);
             //check the availble property
-            if (AnOrder.mOrderStatus != true)
+            if (AnOrder.orderStatus != true)
             {
                 OK = false;
             }
@@ -197,7 +204,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void TestAmountFound()
+        public void TestorderAmountFound()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -206,21 +213,21 @@ namespace Testing3
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 6;
+            Int32 orderId = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderID);
+            Found = AnOrder.Find(orderId);
             //check the game price property
-            if (AnOrder.OrderAmount != 69)
+            if (AnOrder.orderAmount != 13)
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
 
         [TestMethod]
-        public void TestQuantityFound()
+        public void TestorderQuantityFound()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -229,20 +236,20 @@ namespace Testing3
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 6;
+            Int32 orderId = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderID);
+            Found = AnOrder.Find(orderId);
             //check the game price property
-            if (AnOrder.OrderQuantity != 3)
+            if (AnOrder.orderQuantity != 2)
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
         [TestMethod]
-        public void TestAddressFound()
+        public void TestshippingAddressFound()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -251,11 +258,11 @@ namespace Testing3
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 6;
+            Int32 orderId = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderID);
+            Found = AnOrder.Find(orderId);
             //check the game price property
-            if (AnOrder.ShippingAddress != "25 London Road")
+            if (AnOrder.shippingAddress != "25 grasmere street")
             {
                 OK = false;
             }
@@ -264,7 +271,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void TestDescriptionFound()
+        public void TestorderDescriptionFound()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -273,11 +280,11 @@ namespace Testing3
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 6;
+            Int32 orderId = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderID);
+            Found = AnOrder.Find(orderId);
             //check the game description property
-            if (AnOrder.OrderDescription != "League Of Legends")
+            if (AnOrder.orderDescription != "The Last Of Us")
             {
                 OK = false;
             }
@@ -287,10 +294,11 @@ namespace Testing3
 
         //good test data
         //create some test data to pass the method
-        String orderId = "1";
-        String orderQuantity = "2";
-        String orderDescription = "The Last Of Us";
-
+        string orderQuantity = "2";
+        string orderDescription = "The Last Of Us";
+        string orderAmount = "13";
+        string orderDate = "30/04/2024";
+        string shippingAddress = "25 grasmere street";
 
         [TestMethod]
         public void ValidMethodOK()
@@ -298,145 +306,660 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
-            String Error = "";
+            string Error = "";
             //invoke the method
-            Error = AnOrder.Valid(orderId, orderDate, orderStatus, orderAmount, orderQuantity, orderDescription);
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
         [TestMethod]
-        public void orderIdMinLessOne()
+        public void orderDateMinLessOne()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //string c=variable to store any error message
-            String Error = "";
+            string Error = "";
             //create some test data to pass to the method
-            String orderId = ""; //this should trigger an error
+            string orderDate = ""; //this should trigger an error
             //invoke the method
-            Error = AnOrder.Valid(orderId, orderDate, orderStatus, orderAmount, orderQuantity, orderDescription);
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
 
         [TestMethod]
-        public void orderIdMin()
+        public void orderDateMin()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
-            String Error = "";
+            string Error = "";
             //create some test data to pass to the method
-            string orderId = "a"; //this should be ok
+            string orderDate = "a"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(orderId, orderDate, orderStatus, orderAmount, orderQuantity, orderDescription);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-
-        [TestMethod]
-        public void orderIdMinPlusOne()
-        {
-            //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string orderId = "aa"; //this should be ok
-            //invoke the method
-            Error = AnOrder.Valid(orderId, orderDate, orderStatus, orderAmount, orderQuantity, orderDescription);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-
-        [TestMethod]
-        public void orderIdMaxLessOne()
-        {
-            //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string orderId = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
-            //invoke the method
-            Error = AnOrder.Valid(orderId, orderDate, orderStatus, orderAmount, orderQuantity, orderDescription);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-
-
-        [TestMethod]
-        public void orderIdMax()
-        {
-            //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string orderId = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
-            //invoke the method
-            Error = AnOrder.Valid(orderId, orderDate, orderStatus, orderAmount, orderQuantity, orderDescription);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-
-        [TestMethod]
-        public void orderIdMid()
-        {
-            //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string orderId = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
-            //invoke the method
-            Error = AnOrder.Valid(orderId, orderDate, orderStatus, orderAmount, orderQuantity, orderDescription);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-
-        [TestMethod]
-        public void orderIdMaxPlusOne()
-        {
-            //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string orderId = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should fail
-            //invoke the method
-            Error = AnOrder.Valid(orderId, orderDate, orderStatus, orderAmount, orderQuantity, orderDescription);
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
 
         [TestMethod]
-        public void orderIdExtremeMax()
+        public void orderDateMinPlusOne()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
-            String Error = "";
+            string Error = "";
             //create some test data to pass to the method
-            string orderId = "";
-            orderId = orderId.PadRight(500, 'a'); //this should fail
+            string orderDate = "aa"; //this should be ok
             //invoke the method
-            Error = AnOrder.Valid(orderId, orderDate, orderStatus, orderAmount, orderQuantity, orderDescription);
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
+
+        [TestMethod]
+        public void orderDateMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDate = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void orderDateMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDate = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderDateMid()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDate = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderDateMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDate = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should fail
+            //invoke the method
+            Error = AnOrder.Valid(orderDescription, orderQuantity, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderDateExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDate = "";
+            orderDate = orderDate.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void orderAmountMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string c=variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderAmount = ""; //this should trigger an error
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderAmountMin()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderAmount = "a"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderAmountMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderAmount = "aa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderAmountMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderAmount = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void orderAmountMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderAmount = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderAmountMid()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderAmount = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderAmountMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderAmount = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should fail
+            //invoke the method
+            Error = AnOrder.Valid(orderDescription, orderQuantity, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderAmountExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderAmount = "";
+            orderAmount = orderAmount.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderQuantityMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string c=variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderQuantity = ""; //this should trigger an error
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderQuantityMin()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderQuantity = "a"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderQuantityMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderQuantity = "aa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderQuantityMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderQuantity = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void orderQuantityMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderQuantity = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderQuantityMid()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderQuantity = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderQuantityMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderQuantity = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should fail
+            //invoke the method
+            Error = AnOrder.Valid(orderDescription, orderQuantity, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderQuantityExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderQuantity = "";
+            orderQuantity = orderQuantity.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderDescriptionMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string c=variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDescription = ""; //this should trigger an error
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderDescriptionMin()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDescription = "a"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderDescriptionMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDescription = "aa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderDescriptionMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void orderDescriptionMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderDescriptionMid()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderDescriptionMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should fail
+            //invoke the method
+            Error = AnOrder.Valid(orderDescription, orderQuantity, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void orderDescriptionExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string orderDescription = "";
+            orderDescription = orderDescription.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void shippingAddressMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string c=variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string shippingAddress = ""; //this should trigger an error
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void shippingAddressMin()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string shippingAddress = "a"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void shippingAddressMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string shippingAddress = "aa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void shippingAddressMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string shippingAddress = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void shippingAddressMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string shippingAddress = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void shippingAddressMid()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string shippingAddress = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void shippingAddressMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string shippingAddress = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should fail
+            //invoke the method
+            Error = AnOrder.Valid(orderDescription, orderQuantity, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void shippingAddressExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method
+            string shippingAddress = "";
+            shippingAddress = shippingAddress.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = AnOrder.Valid(orderQuantity, orderDescription, orderAmount, orderDate, shippingAddress);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
-
-    
-

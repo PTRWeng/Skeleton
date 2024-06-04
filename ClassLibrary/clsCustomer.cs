@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
 {
@@ -9,7 +10,6 @@ namespace ClassLibrary
         }
 
         public bool Active { get; set; }
-        public DateTime DateAdded { get; set; }
 
         //private data member for the available property
         private Boolean mPlacedOrder;
@@ -48,20 +48,19 @@ namespace ClassLibrary
         }
 
         //private data member for the release date property
-        private DateTime mCustomerFirstName;
+        private string mCustomerFirstName;
         //orderDate public property
-        public DateTime CustomerFirstName
+        public string CustomerFirstName
         {
             get
             {
                 //this line of code sends data out of the property
                 return mCustomerFirstName;
             }
-            set
-            {
+
+            set =>
                 //this line of code allows data into the property
                 mCustomerFirstName = value;
-            }
         }
 
         //private data member for the release date property
@@ -100,19 +99,19 @@ namespace ClassLibrary
 
 
          //private data member for the release date property
-         private string mCustomerAdress;
+         private string mCustomerAddress;
          //orderDate public property
-         public string CustomerAdress
+         public string CustomerAddress
          {
                    get
                    {
                 //this line of code sends data out of the property
-                return mCustomerAdress;
+                return mCustomerAddress;
                    }
                  set
                  {
                 //this line of code allows data into the property
-                mCustomerAdress = value;
+                mCustomerAddress = value;
                  }
 
          }
@@ -138,14 +137,47 @@ namespace ClassLibrary
         }
 
         //*****FIND METHOD*****//
+        
+
         public bool Find(int CustomerId)
         {
-            //set the private data members to the test Data value
-            mCustomerId = 1;
-            mDateAdded = Convert.ToDateTime("23/12/2022");
-           //always return true
-           return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search for 
+            DB.AddParameter("@CustomerId", CustomerId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_filterByCustomerId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1) 
+            {
+                //copy the data from the database to the private data members
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0][CustomerId]);
+                mCustomerFirstName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFirstName"]);
+                mCustomerLastName = Convert.ToString(DB.DataTable.Rows[0]["CustomerLastName"]);
+                mCustomerEmailAdress = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmailAdress"]);
+                mCustomerDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerDateOfBirth"]);
+                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                mPlacedOrder = Convert.ToBoolean(DB.DataTable.Rows[0]["PlacedOrder"]);
+                //return that everything worked OK
+                return true;
+            }
+
+            //if no record wa found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+
+
+            
         }
+        public string Valid(string CustomerFirstName, string CustomerLastname, string CustomerDateOfBirth, string CustomerEmailAdress, string CustomerAddress)
+        {
+
+            return "";
+        }
+
     }
 
 

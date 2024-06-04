@@ -20,6 +20,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 DisplayStaff();
             }
+            clsStaffUser AnUser = new clsStaffUser();
+            AnUser = (clsStaffUser)Session["AnUser"];
+            Response.Write("Logged In as a : " + AnUser.UserName);
         }
     }
 

@@ -14,6 +14,9 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayStaffs();
         }
+        clsStaffUser AnUser = new clsStaffUser();
+        AnUser = (clsStaffUser)Session["AnUser"];
+        Response.Write("Logged In as a : " + AnUser.UserName);
     }
 
     void DisplayStaffs()

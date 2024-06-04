@@ -112,6 +112,77 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string staffFirstName, string staffLastName, string staffDateofBirth, string staffNumber, string staffAddress, string staffEmail)
+        {
+            String Error = "";
+            DateTime TestDate;
 
+            if (staffFirstName.Length == 0)
+            {
+                Error += "First Name Cant be empty.";
+            }
+            if (staffFirstName.Length > 20)
+            {
+                Error += "First name shoud be smaller than 20.";
+            }
+
+            if (staffLastName.Length == 0)
+            {
+                Error += "Last Name Cant be empty.";
+            }
+            if (staffLastName.Length > 20)
+            {
+                Error += "Last name shoud be smaller than 20.";
+            }
+
+            try
+            {
+                TestDate = Convert.ToDateTime(staffDateofBirth);
+                if (TestDate > DateTime.Now.Date)
+                {
+                    Error += "Date cant be in the future......";
+                }
+                if (TestDate < DateTime.Now.Date)
+                {
+                    Error += "Date cant be in the Past.....";
+                }
+            }
+            catch
+            {
+                Error += "Invalid data.";
+            }
+
+
+            if (staffNumber.Length < 6)
+            {
+                Error += "Number's Minimum is 6 digit long.";
+            }
+            if (staffNumber.Length > 15)
+            {
+                Error += "numbers' is 15 digit long.";
+            }
+
+
+            if (staffEmail.Length == 0)
+            {
+                Error += "StaffEmail cant be empty.";
+            }
+            if (staffEmail.Length > 30)
+            {
+                Error += "StaffEmail Must be lesser than 30 Characters.";
+            }
+
+            if (staffAddress.Length == 0)
+            {
+                Error += "StaffAddress cant be empty.";
+            }
+            if (staffAddress.Length > 200)
+            {
+                Error += "StaffAddress must be lesser than 200 Characters.";
+            }
+
+
+            return Error;
+        }
     }
 }

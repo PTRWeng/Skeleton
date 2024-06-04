@@ -22,8 +22,8 @@ namespace Testing1
         {
             clsStaff AStaff = new clsStaff();
             int TestData = 1;
-            AStaff.Staff = TestData;
-            Assert.AreEqual(AStaff.Staff, TestData);
+            AStaff.StaffID = TestData;
+            Assert.AreEqual(AStaff.StaffID, TestData);
 
         }
 
@@ -97,7 +97,7 @@ namespace Testing1
             Int32 StaffID = 2;
 
             Found = AStaff.Find(StaffID);
-            if (AStaff.Staff != 2)
+            if (AStaff.StaffID != 2)
             {
                 Ok = false;
             }

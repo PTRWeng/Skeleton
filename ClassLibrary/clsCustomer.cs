@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
@@ -81,19 +81,19 @@ namespace ClassLibrary
         }
 
         //private data member for the release date property
-        private string mCustomerEmailAdress;
+        private string mCustomerEmailAddress;
         //orderDate public property
-        public string CustomerEmailAdress
+        public string CustomerEmailAddress
         {
             get
             {
                 //this line of code sends data out of the property
-                return mCustomerEmailAdress;
+                return mCustomerEmailAddress;
             }
             set
             {
                 //this line of code allows data into the property
-                mCustomerEmailAdress = value;
+                mCustomerEmailAddress = value;
             }
         }
 
@@ -117,9 +117,7 @@ namespace ClassLibrary
          }
 
         //private data member for the release date property
-        private int  mCustomerId;
-        private DateTime mDateAdded;
-
+        private Int32  mCustomerId;
         //orderDate public property
         public int CustomerId
         {
@@ -136,8 +134,10 @@ namespace ClassLibrary
 
         }
 
+        public DateTime DateTemp { get; private set; }
+
         //*****FIND METHOD*****//
-        
+
 
         public bool Find(int CustomerId)
         {
@@ -146,15 +146,15 @@ namespace ClassLibrary
             //add the parameter for the address id to search for 
             DB.AddParameter("@CustomerId", CustomerId);
             //execute the stored procedure
-            DB.Execute("sproc_tblCustomer_filterByCustomerId");
+            DB.Execute("sparoc_tblCustomer_FilterByCustomerId");
             //if one record is found (there should be either one or zero)
             if (DB.Count == 1) 
             {
                 //copy the data from the database to the private data members
-                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0][CustomerId]);
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
                 mCustomerFirstName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFirstName"]);
                 mCustomerLastName = Convert.ToString(DB.DataTable.Rows[0]["CustomerLastName"]);
-                mCustomerEmailAdress = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmailAdress"]);
+                mCustomerEmailAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmailAddress"]);
                 mCustomerDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerDateOfBirth"]);
                 mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
                 mPlacedOrder = Convert.ToBoolean(DB.DataTable.Rows[0]["PlacedOrder"]);
@@ -172,11 +172,105 @@ namespace ClassLibrary
 
             
         }
-        public string Valid(string CustomerFirstName, string CustomerLastname, string CustomerDateOfBirth, string CustomerEmailAdress, string CustomerAddress)
+
+
+
+        public string Valid(string CustomerFirstName, string CustomerLastName, string CustomerDateOfBirth, string CustomerEmailAddress, string CustomerAddress)
         {
 
-            return "";
+            //create a string variable to store the error
+            string Error = "";
+            //if the orderId is blank
+            if (CustomerFirstName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Customer firstname may not be blank : ";
+            }
+            //if the order id is greater than 10 characters
+            if (CustomerFirstName.Length > 10)
+            {
+                //record the error
+                Error = Error + "The Customer firstname must be less than 10 characters : ";
+            }
+
+
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(CustomerDateOfBirth);
+
+                DateTime DateComp = DateTime.Now.Date;
+                if (DateTemp < DateComp) //compare dateAdded with Date
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            //is the order id blank
+            if (CustomerAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Customer Address may not be blank : ";
+            }
+
+
+            //if the order id is too long
+            if (CustomerAddress.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Customer Address must be less than 50 characters : ";
+            }
+
+
+            //is the order id blank
+            if (CustomerEmailAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Customer EmailAddress may not be blank : ";
+            }
+
+
+            //if the order id is too long
+            if (CustomerEmailAddress.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Customer EmailAddress must be less than 20 characters : ";
+            }
+
+
+            //is the order id blank
+            if (CustomerDateOfBirth.Length == 0)
+            {
+                //record the error
+                Error = Error + "The order date may not be blank : ";
+            }
+
+
+            //if the order id is too long
+            if (CustomerLastName.Length > 10)
+            {
+                //record the error
+                Error = Error + "The shipping address must be less than 50 characters : ";
+            }
+
+
+            //return any error messages
+            return Error;
         }
+
+    
 
     }
 

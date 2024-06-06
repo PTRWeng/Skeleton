@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,9 +10,23 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+
+    //variable to store the primary key value of the record to be deleted
+    Int32 orderId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the order to be processed
+        orderId = Convert.ToInt32(Session["orderId"]);
+        if (IsPostBack == false)
+        {
+            //if this is the not a new record
+            if (orderId != -1)
+            {
+                //display the current data for the record
+                DisplayOrder();
+            }
+        }
     }
 
 
@@ -30,14 +44,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string orderDate = txtorderDate.Text;
         //capture the order quantity
         string orderQuantity = txtorderQuantity.Text;
+        //capture the shipping address
+        string shippingAddress = txtshippingAddress.Text;
         //variable to store any error messages
         string Error = "";
         //validate the data
-        Error = AnOrder.Valid(orderId, orderDescription, orderQuantity, orderAmount, orderDate);
+        Error = AnOrder.Valid(orderDescription, orderQuantity, orderAmount, orderDate, shippingAddress);
         if (Error == "")
         {
-            //capture the order id
-            AnOrder.orderId = Convert.ToInt32(orderId);
+
             //capture the order description
             AnOrder.orderDescription = orderDescription;
             //capture the order quantity
@@ -46,10 +61,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.orderAmount = Convert.ToInt32(orderAmount);
             //capture the order date
             AnOrder.orderDate = Convert.ToDateTime(orderDate);
-            //store the order in the session object
-            Session["AnOrder"] = AnOrder;
-            //navigate to the new page
-            Response.Redirect("OrderViewer.aspx");
+            //capture the order date
+            AnOrder.shippingAddress = Convert.ToString(shippingAddress);
+            //capture available
+            AnOrder.orderStatus = chkStatus.Checked;
+            //create a new instance of the order collection
+            clsOrderCollection orderList = new clsOrderCollection();
+
+            //if this is a new record i.e. orderid = -1 then add the data
+            if (orderId == -1)
+            {
+                //set the Thisorder property
+                orderList.ThisOrder = AnOrder;
+                //add the new record
+                orderList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                orderList.ThisOrder.Find(orderId);
+                //set the Thisorder property
+                orderList.ThisOrder = AnOrder;
+                //update the record
+                orderList.Update();
+            }
+            //redirect back to the list page
+            Response.Redirect("OrderList.aspx");
         }
         else
         {
@@ -93,9 +131,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
         catch (FormatException)
         {
-            // Handle invalid input (non-integer value for GameID)
+            // Handle invalid input (non-integer value for orderId)
             lblError.Text = "Please enter a valid Order ID.";
         }
+    }
+
+
+    void DisplayOrder()
+    {
+        //create an instance of the order book
+        clsOrderCollection Order = new clsOrderCollection();
+        //find the record to update
+        Order.ThisOrder.Find(orderId);
+        //display the data for the record
+        txtorderId.Text = Order.ThisOrder.orderId.ToString();
+        txtorderQuantity.Text = Order.ThisOrder.orderQuantity.ToString();
+        txtorderDescription.Text = Order.ThisOrder.orderDescription.ToString();
+        txtshippingAddress.Text = Order.ThisOrder.shippingAddress.ToString();
+        txtorderDate.Text = Order.ThisOrder.orderDate.ToString();
+        txtorderAmount.Text = Order.ThisOrder.orderAmount.ToString();
+        chkStatus.Checked = Order.ThisOrder.orderStatus;
+    }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 
 }

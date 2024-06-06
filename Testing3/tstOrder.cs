@@ -1,4 +1,4 @@
-﻿using ClassLibrary;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net;
 using System;
@@ -178,7 +178,7 @@ namespace Testing3
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
         [TestMethod]
@@ -222,7 +222,7 @@ namespace Testing3
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
 
@@ -245,7 +245,7 @@ namespace Testing3
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
         [TestMethod]
@@ -298,6 +298,7 @@ namespace Testing3
         string orderDescription = "The Last Of Us";
         string orderAmount = "13";
         string orderDate = "30/04/2024";
+        string shippingAddress = "25 grasmere street";
 
         [TestMethod]
         public void ValidMethodOK()

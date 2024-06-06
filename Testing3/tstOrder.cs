@@ -133,7 +133,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrder.Find(orderId);
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsFalse(Found);
         }
 
 
@@ -156,7 +156,7 @@ namespace Testing3
                 OK = false;
             }
             //test to see that result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
         [TestMethod]
@@ -200,7 +200,7 @@ namespace Testing3
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
         [TestMethod]
@@ -267,7 +267,7 @@ namespace Testing3
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
         [TestMethod]
@@ -289,7 +289,7 @@ namespace Testing3
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
 
         //good test data

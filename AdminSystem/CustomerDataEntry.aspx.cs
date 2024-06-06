@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,7 +20,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Write(AnCustomer.CustomerLastName);
     }
 
-
+   
     protected void btnFind_Click(object sender, EventArgs e)
     {
         //create an instance of the customer class
@@ -40,24 +40,61 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerFirstName.Text = AnCustomer.CustomerFirstName;
             txtCustomerLastName.Text = AnCustomer.CustomerLastName;
             txtCustomerDateOfBirth.Text = AnCustomer.CustomerDateOfBirth.ToString();
-            txtCustomerEmailAdress.Text = AnCustomer.CustomerEmailAdress;
+            txtCustomerEmailAddress.Text = AnCustomer.CustomerEmailAddress;
             txtCustomerAddress.Text = AnCustomer.CustomerAddress;
             chkOrderPlaced.Checked = AnCustomer.Active;
         }
     }
 
+   
     protected void btnOk_Click(object sender, EventArgs e)
     {
        //create a new instance of clsCustomer
        clsCustomer AnCustomer = new clsCustomer();
         //capture the FirstName 
-        AnCustomer.CustomerLastName = txtCustomerLastName.Text;
-        //store the LastName in the session object 
-        Session["AnCustomer"] = AnCustomer;
-        //navigate to the view page
-        Response.Redirect("CustomerViewer.aspx");
-    }
+        string CustomerLastName = txtCustomerLastName.Text;
+        //store the LastName in the session object
+        string CustomerFirstName = txtCustomerFirstName.Text;
+        //store the LastName in the session object
+        string CustomerDateOfBirth = txtCustomerDateOfBirth.Text;
+        //store the LastName in the session object
+        string CustomerEmailAddress = txtCustomerEmailAddress.Text;
+        //store the LastName in the session object
+        string CustomerAddress = txtCustomerAddress.Text;
+        //store the LastName in the session object
+        string PlacedOrder = chkOrderPlaced.Text;
+        //error
+        string Error = "";
+        //validate data
+        Error = AnCustomer.Valid(CustomerFirstName, CustomerLastName, CustomerEmailAddress, CustomerAddress, CustomerDateOfBirth);
+        if (Error == "")
+        {
+            //capture customer first name
+            AnCustomer.CustomerFirstName = CustomerFirstName;
+            //capture customer last name
+            AnCustomer.CustomerLastName = CustomerLastName;
+            //capture customer address
+            AnCustomer.CustomerAddress = CustomerAddress;
+            //capture customer email
+            AnCustomer.CustomerEmailAddress = CustomerEmailAddress;
+            //capture customer dob
+            AnCustomer.CustomerDateOfBirth = Convert.ToDateTime(CustomerDateOfBirth);
+            //store the customer in the session object
+            Session["AnCustomer"] = AnCustomer;
+            //navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display error
+            lblError.Text = Error;
+        }
 
     }
+
+
+
+   
+}
 
  

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,11 +21,11 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the LastName of the customer
         Response.Write(AnCustomer.CustomerLastName);    
         //display the email address of the customer 
-        Response.Write(AnCustomer.CustomerEmailAdress);
+        Response.Write(AnCustomer.CustomerEmailAddress);
         //display the date of birth of the customer 
         Response.Write(AnCustomer.CustomerDateOfBirth);
         //display the address of the customer
-        Response.Write(AnCustomer.CustomerAdress);
+        Response.Write(AnCustomer.CustomerAddress);
         //display the placed order for this entry
         Response.Write(AnCustomer.PlacedOrder);
     }

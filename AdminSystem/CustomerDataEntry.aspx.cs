@@ -20,14 +20,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Write(AnCustomer.CustomerLastName);
     }
 
-    protected void txtCustomerLastName_TextChanged(object sender, EventArgs e)
-    {
 
-    }
-    protected void txtCustomerFirstName_TextChanged(object sender, EventArgs e)
-    {
-
-    }
     protected void btnFind_Click(object sender, EventArgs e)
     {
         //create an instance of the customer class
@@ -65,10 +58,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("CustomerViewer.aspx");
     }
 
-    protected void txtCustomerDateOfBirth_TextChanged(object sender, EventArgs e)
-    {
-
     }
-}
 
  

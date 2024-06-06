@@ -32,7 +32,6 @@
         <p>
         <asp:Button ID="btnOk" runat="server" style="z-index: 1; left: 44px; top: 443px; position: absolute; height: 26px;" Text="OK" OnClick="btnOk_Click" />
         </p>
-        <asp:Label ID="lblCustomerDateOfBirth" runat="server" style="z-index: 1; left: 19px; top: 298px; position: absolute" Text="Customer Date Of Birth"></asp:Label>
     </form>
 </body>
 </html>

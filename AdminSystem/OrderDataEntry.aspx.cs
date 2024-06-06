@@ -54,7 +54,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
 
             //capture the order description
-            AnOrder.orderDescription = orderDescription;
+            AnOrder.orderDescription = Convert.ToString(orderDescription);
             //capture the order quantity
             AnOrder.orderQuantity = Convert.ToInt32(orderQuantity);
             //capture the order amount

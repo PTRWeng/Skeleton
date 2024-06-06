@@ -174,8 +174,10 @@ namespace ClassLibrary
         }
         public string Valid(string CustomerFirstName, string CustomerLastname, string CustomerDateOfBirth, string CustomerEmailAdress, string CustomerAddress)
         {
+                //record the error
+                Error = Error + "The shipping address must be less than 50 characters : ";
+            }
 
-            return "";
         }
 
     }

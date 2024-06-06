@@ -12,7 +12,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     Int32 orderId;
     protected void Page_Load(object sender, EventArgs e)
     {
-        //get the number of the game to be deleted from session object
+        //get the number of the order to be deleted from session object
         orderId = Convert.ToInt32(Session["orderId"]);
     }
 

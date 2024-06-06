@@ -15,6 +15,12 @@
             <asp:Button ID="btnCustomers" runat="server"  OnClick="btnCustomers_Click" style="z-index: 1; left: 608px; top: 133px; position: absolute" Text="Customers" />
 
         </div>
+
+
+        <p>
+        <asp:Button ID="btnStaff" runat="server" style="z-index: 1; left: 510px; top: 218px; position: absolute" Text="Staff" OnClick="btnStaff_Click" />
+        </p>
+
     </form>
 </body>
 </html>

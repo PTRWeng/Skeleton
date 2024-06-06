@@ -153,4 +153,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //redirect the user to the main menu page
         Response.Redirect("TeamMainMenu.aspx");
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ProductList.aspx");
+    }
 }
